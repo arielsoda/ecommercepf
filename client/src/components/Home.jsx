@@ -1,9 +1,11 @@
 /* import componente from "./../assets/styles/"; */
 
+import { Link } from "react-router-dom"
+
 const Home = () => {
     return (
         <div >
-            <h1>Soy un componente</h1>
+            <Link to="/login">Login</Link>
         </div>
     )
 }
