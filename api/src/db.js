@@ -34,13 +34,15 @@ const { Category, Order, Product, User, Cart, Detail } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
+Product.belongsToMany(User, { through:"cart" });
+User.belongsToMany(Product,{ through:"cart" });
 
-Product.belongsToMany(User, {through: Cart, foreignKey:"IdProduct"});
-User.belongsToMany(Product, {through: Cart, foreignKey:"IdUser" });
+Product.belongsToMany(Order, { through:"detail" });
+Order.belongsToMany(Product,{ through:"detail" });
 
-Order.belongsToMany(Product, {through: Detail, foreignKey:"IdOrder"});
-Product.belongsToMany(Order, {through: Detail, foreignKey:"IdProduct"});
+User.hasMany(Order)
 
+Category.hasMany(Product)
 
 
 

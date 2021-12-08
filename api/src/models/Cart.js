@@ -5,5 +5,5 @@ module.exports = (sequelize) => {
   // defino el modelo
     sequelize.define('cart', {
         amount : DataTypes.INTEGER
-    });
+    }, {timestamps: false});
 };
