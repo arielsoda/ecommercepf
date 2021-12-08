@@ -10,8 +10,7 @@
 
 .form{
     width: 60%;
-    height: 80%;
-
+    height: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,11 +19,12 @@
 
 .input{
     width: 75%;
-    height: 7%;
+    height: 35px;
+    padding-left: 7px;
     font-size: 1.5em;
-    background-color: #E3F6F5;
     border: 2px solid rgb(41, 41, 41);
     border-radius: 6px;
+    box-sizing: border-box;
 }
 
 .alternativeSubmit{
@@ -34,6 +34,7 @@
     border-radius: 10px;
     border: 0;
     background-color: white;
+    transition: background-color .3s;
     box-shadow: 0px 3px 7px 1px rgba(0, 0, 0, 0.4);
 
 }
@@ -41,16 +42,21 @@
 .alternativeSubmit:hover{
     cursor: pointer;
     background-color: rgb(232, 232, 232);
+    transition: background-color .3s;
+}
+
+.alternativeSubmit:active{
+    background-color: rgb(196, 196, 196);
+    transition: background-color .3s;
 }
 
 .container{
-    width: 250px;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
-
 }
 
 .icon{
@@ -68,15 +74,117 @@
     border-radius: 10px;
     border: 0;
     background-color: #FFD803;
+    transition: background-color .3s;
     box-shadow: 0px 3px 7px 1px rgba(0, 0, 0, 0.4);
 }
 
 .normalSubmit:hover{
     cursor: pointer;
     background-color: rgb(215, 180, 6);
+    transition: background-color .3s;
+}
+
+.normalSubmit:active{
+    background-color: rgb(179, 150, 4);
+    transition: background-color .3s;
 }
 
 .title{
     font-size: 2em;
     margin: 0;
+    text-align: center;
+}
+
+.link{
+    color: rgb(0, 117, 189);
+    text-decoration: none;
+}
+
+@media (min-width: 619px) and (max-width: 1024px) {
+    .alternativeSubmit{
+        width: 60%;
+    }
+
+    .title{
+        width: 600px;
+        font-size: 1.8em;
+        margin: 0;
+    }
+
+    .btnText{
+        font-size: 1.1em;
+        font-weight: bolder;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 619px) {
+    .form{
+        width: 80%;
+        background-color: #2D334A;
+        border-radius: 5%;
+    }
+
+    .title{
+        font-size: 1.1em;
+        color: #E3F6F5;
+        text-align: center;
+    }
+
+    .container{
+        width: 80%;
+    }
+
+    .alternativeSubmit{
+        width: 60%;
+        height: 8%;
+    }
+
+    .btnText{
+        font-size: 1.2em;
+        font-weight: bolder;
+    }
+
+    .icon{
+        width: 30px;
+    }
+
+    .input{
+        padding-left: 7px;
+        font-size: 1em;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 425px) {
+    .form{
+        width: 80%;
+        background-color: #2D334A;
+        border-radius: 5%;
+    }
+
+    .title{
+        font-size: 1.3em;
+        color: #E3F6F5;
+        text-align: center;
+    }
+
+    .input{
+        padding-left: 7px;
+        font-size: 1em;
+        box-sizing: border-box;
+    }
+
+    .alternativeSubmit{
+        width: 60%;
+        height: 8%;
+    }
+
+    .icon{
+        width: 30px;
+    }
+
+    .btnText{
+        font-size: 1em;
+        
+    }
 }

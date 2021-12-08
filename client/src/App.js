@@ -11,11 +11,14 @@ function App() {
     <div className="App">
       {/* borrar cuando termines */}
       <div className={s.navbar}></div>
-
-      <Login/>
-      {/* <Switch>
+      
+      <Switch>
         <Route exact path="/" component={Home}/>
-      </Switch> */}
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/register">
+          <h1>Form de registro</h1>
+        </Route>
+      </Switch>
     </div>
   );
 }
