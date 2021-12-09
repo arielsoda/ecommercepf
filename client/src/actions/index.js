@@ -1,40 +1,33 @@
-export const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART";
-export const INCREMENT_CART_ITEM_QUANTITY ="INCREMENT_CART_ITEM_QUANTITY";
-export const DECREMENT_CART_ITEM_QUANTITY= "DECREMENT_CART_ITEM_QUANTITY";
-export const REMOVE_PRODUCT_FROM_CART="REMOVE_PRODUCT_FROM_CART";
-export const CLEAR_CART="CLEAR_CART";
+import { GET_ALL_PRODUCTS, 
+         GET_PRODUCT_BY_NAME,
+         } from "./actionsTypes";
+import axios from 'axios';
 
-// //para probar mi carrito
-export function addProductToCart(product) {
-    return {
-        type: ADD_PRODUCT_TO_CART,
-        payload: product
-    };
-}
-//de carrito
-export function incrementCartItemQuantity(id){
-    return {
-        type: INCREMENT_CART_ITEM_QUANTITY,
-        payload: id
+
+export function getAllProducts() {
+    return async function(dispatch){
+        try{
+            const products = await axios.get('http://localhost:3001/products');
+            return dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: products.data
+            });
+        }catch(err){
+            console.log(err)
+        }
     }
-}
+};
 
-export function decrementCartItemQuantity(id){
-    return {
-        type: DECREMENT_CART_ITEM_QUANTITY,
-        payload: id
+export function getProductByName(name) {
+    return async function(dispatch){
+        try{
+            const product = await axios.get(`http://localhost:3001/product?name=${name}`)
+            return dispatch({
+                type: GET_PRODUCT_BY_NAME,
+                payload: product.data
+            })
+        }catch(err){
+            console.log(err)
+        }
     }
-}
-
-export function removeProductFromCart(id) {
-    return {
-        type: REMOVE_PRODUCT_FROM_CART,
-        payload: id
-    };
-}
-
-export function clearCart() {
-    return {
-        type: CLEAR_CART
-    }
-}
+};

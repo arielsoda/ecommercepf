@@ -1,8 +1,8 @@
 import s from "../assets/styles/Home.module.css";
 import Card from './ProductCard.jsx'
 import {useState} from 'react';
-
-import { Link } from "react-router-dom"
+//import { Link } from "react-router-dom"
+import SearchBar from "./SearchBar";
 
 const Home = () => {
     const [state,setState] = useState([
@@ -64,9 +64,12 @@ const Home = () => {
         },
     ])
     return (
-        <div className={s.container}>
+        <>
+         <div className={s.container}>
             {state.map(prod=><Card key={prod.id} id={prod.id} name={prod.name} price={prod.price} image={prod.image}/>)}
         </div>
+        </>
+       
     )
 }
 
