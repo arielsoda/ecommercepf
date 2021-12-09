@@ -1,13 +1,27 @@
-import {DO_SOMETHING} from "../actions/index.js"
+import{ GET_ALL_PRODUCTS, 
+    GET_PRODUCT_BY_NAME } from '../actions/actionsTypes'
 
-export function reducer(state={}, {type, payload}){
-    switch(type){
-        case DO_SOMETHING:
-            // do something...
-            break;
-        
+const initialState = {
+    allProducts: [], 
+    filters: []
+}
+
+function reducer(state = initialState, action){   
+    switch(action.type){
+        case GET_ALL_PRODUCTS:
+            return {
+                ...state,
+                allProducts: action.payload,
+                filters: action.payload
+            };
+        case GET_PRODUCT_BY_NAME:
+            return {
+                ...state,
+                filters: action.payload
+            };
         default:
-            // do something else...
-            break;
+            return state;
     }
 }
+
+export default reducer
