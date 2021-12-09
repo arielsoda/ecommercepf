@@ -2,11 +2,10 @@
    max-width: 100%;
    height: auto;
    min-height: 100vh;
-   margin-top: 100px;
-   background-color: rgb(224, 216, 216);
+   background-color: rgb(230, 220, 189);
    display: flex;
-   justify-content: center;
+   justify-content: space-around;
    flex-shrink: 1;
    flex-wrap: wrap;
-   padding: 40px 30px;
+   padding: 400px 40px 30px 40px;
 }
