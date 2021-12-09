@@ -13,7 +13,7 @@ function App() {
       <Nav/>
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route exact path="/:idproduct" component={Details}/>
+        <Route exact path="/detail/:idproduct" component={Details}/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register">
           <h1>Form de registro</h1>
