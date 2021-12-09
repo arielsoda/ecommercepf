@@ -7,16 +7,11 @@ module.exports = (sequelize) => {
     idProduct:{
         type: DataTypes.UUID,
         primaryKey:true,
-        allowNull: false,
         defaultValue: DataTypes.UUIDV4
     },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    brand:{
-        type: DataTypes.STRING,
-        // allowNull:false
     },
     price:{
         type: DataTypes.FLOAT,
@@ -46,5 +41,5 @@ module.exports = (sequelize) => {
         type: DataTypes.JSON,
         // allowNull: false
     },
-    });
+    }, {timestamps: false});
 };

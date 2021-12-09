@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
@@ -29,20 +29,33 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Category, Order, Product, User, Cart, Detail } = sequelize.models;
+const { Category, Order, Product, User, Cart, Details, Brand, CategoryBrand} = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-Product.belongsToMany(User, { through:"cart" });
-User.belongsToMany(Product,{ through:"cart" });
+//Cada usuario puede guardar en su carrito muchos productos, y estos productos pueden ser los mismos para distintos usuarios
+Product.belongsToMany(User, { through: Cart , foreignKey:"ProductId"}); //users
+User.belongsToMany(Product,{ through: Cart , foreignKey:"UserId"});  //products
 
-Product.belongsToMany(Order, { through:"detail" });
-Order.belongsToMany(Product,{ through:"detail" });
+//Muchos productos pueden estar en una misma orden y distintas ordenes pueden tener a los mismos productos
+Product.belongsToMany(Order, { through: Details, foreignKey:"ProductId" }); //orders
+Order.belongsToMany(Product,{ through: Details , foreignKey:"OrderId"}); //products
 
-User.hasMany(Order)
+//Cada categoría puede tener distintas marcas y a su vez cada marca puede pertenecer a distintas categorías
+Category.belongsToMany(Brand, { through:"categoryBrand", foreignKey:"CategoryId" }); //brands
+Brand.belongsToMany(Category, { through: "categoryBrand", foreignKey:"BrandId"}); //categories
 
-Category.hasMany(Product)
+//Cada producto tiene un único par categoría-Marca, pero muchos productos pueden tener el mismo
+CategoryBrand.hasMany(Product, {
+  as:"relation", 
+  foreignKey:{
+    name:"idRelation",
+    type: DataTypes.UUID,
+  }
+}); //relation
+
+
 
 
 
