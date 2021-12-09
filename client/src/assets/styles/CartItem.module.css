@@ -1,0 +1,19 @@
+/* .container{
+    display: flex;
+   
+    align-content: center;
+    background-color: rgb(231, 237, 238);
+} */
+/* .container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    background-color: rgb(245, 245, 245);
+} */
+
+.lab{
+    color:dimgray;
+    font-size: 30px;
+}
+.container{
+    border-bottom: thin solid rgb(74, 127, 160);
+}
