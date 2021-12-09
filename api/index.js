@@ -9,6 +9,7 @@ const {Product, CategoryBrand, Brand, Category} =require('./src/db');
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async () => {
   try{
+    //[si ya hay elementos en la base de datos no hago fetch a la api
     let aux = await Product.count();
     //! console.log(aux)
     if(!aux){
@@ -20,7 +21,7 @@ conn.sync({ force: true }).then(async () => {
       //[Agrego los productos a la base de datos
       for(let prod of products){
         //! console.log("PROD-DATA: ", prod.data)
-        let product = await Product.create(prod.data)
+        
         //| BUSCO CATEGORY
         let category = await Category.findOne({
           where:{
@@ -40,11 +41,13 @@ conn.sync({ force: true }).then(async () => {
         let relation = await CategoryBrand.findOne({
           where: {idRelation: relId}
         });
-         console.log("category: ", category.toJSON());
-         console.log("RELATION: ", relation.toJSON());
+         //! console.log("category: ", category.toJSON());
+         //! console.log("RELATION: ", relation.toJSON());
+         //! console.log("REL ID: ", relId)
         //[Agrego al producto el id de la relación.
-        //TODO: 
-        //await relation.addRelation(product)
+        let product = await Product.create({
+          ...prod.data, idRelation:relId},
+        )
       }
     }
 

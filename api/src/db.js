@@ -47,16 +47,14 @@ Category.belongsToMany(Brand, { through:"categoryBrand", foreignKey:"CategoryId"
 Brand.belongsToMany(Category, { through: "categoryBrand", foreignKey:"BrandId"}); //categories
 
 //Cada producto tiene un único par categoría-Marca, pero muchos productos pueden tener el mismo
-CategoryBrand.hasMany(Product, {
-  as:"relation", 
-  foreignKey:{
-    name:"idRelation",
-    type: DataTypes.UUID,
-  }
-}); //relation
+CategoryBrand.hasMany(Product, {as:"relation", foreignKey:{name:"idRelation",type: DataTypes.UUID,}}); //relation
+Product.belongsTo(CategoryBrand, {foreignKey:{ name:"idRelation", type: DataTypes.UUID, },as:"relation"}); //categoryBrand
 
-
-
+// Tutorial.hasMany(Comment, { as: "comments" });
+// Comment.belongsTo(Tutorial, {
+//   foreignKey: "tutorialId",
+//   as: "tutorial",
+// });
 
 
 

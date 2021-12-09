@@ -6,6 +6,7 @@ module.exports = (sequelize) => {
   sequelize.define('categoryBrand', {
     idRelation:{
       type: DataTypes.UUID,
+      primaryKey:true,
       defaultValue: DataTypes.UUIDV4
     },
   }, {timestamps: false});
