@@ -3,15 +3,14 @@ import './App.css';
 import {Switch, Route} from 'react-router-dom';
 import Home from './components/Home'
 import Login from './components/Login';
-
+import Details from './components/Details'
+import Nav from './components/Nav'
 import s from "./assets/styles/login.module.css"
 
 function App() {
   return (
     <div className="App">
-      {/* borrar cuando termines */}
-      <div className={s.navbar}></div>
-      
+      <Nav/>
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route exact path="/:idproduct" component={Details}/>
