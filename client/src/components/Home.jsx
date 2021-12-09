@@ -2,7 +2,7 @@ import s from "../assets/styles/Home.module.css";
 import Card from './ProductCard.jsx'
 import {useState} from 'react';
 //import { Link } from "react-router-dom"
-import SearchBar from "./SearchBar";
+
 
 const Home = () => {
     const [state,setState] = useState([
