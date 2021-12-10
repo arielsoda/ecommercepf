@@ -20,6 +20,6 @@ router.get('/',getProducts, (req, res, next)=>{
     }
 });
 
-route.post('/',postProduct);
+router.post('/',postProduct);
 
 module.exports= router;
