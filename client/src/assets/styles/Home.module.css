@@ -1,11 +1,11 @@
 .container{
    max-width: 100%;
    height: auto;
-   min-height: 100vh;
+   /* min-height: 100vh; */
    background-color: rgb(230, 220, 189);
    display: flex;
-   justify-content: space-around;
+   justify-content: space-evenly;
    flex-shrink: 1;
    flex-wrap: wrap;
-   padding: 400px 40px 30px 40px;
+   padding: 150px 40px 30px 40px;
 }
