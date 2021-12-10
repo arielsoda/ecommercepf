@@ -21,7 +21,7 @@ const getProducts= async (req, res, next)=>{
     res.status(200).json({productsInfo, offset})
   }catch(err){
     console.log("getProducts: ", err);
-    next(err)
+    next(err);
   }
 
 }
