@@ -3,12 +3,10 @@ const {getProducts} = require('../Controllers/RouterFunctions/Products/GetProduc
 const {getProductById} = require('../Controllers/RouterFunctions/Products/getProductById');
 const {getProductBySearch} = require('../Controllers/RouterFunctions/Products/getProductBySearch');
 const {getProductByRankPrice} = require('../Controllers/RouterFunctions/Products/getProductByRankPrice');
-const {getByCategory} =require('../Controllers/RouterFunctions/Products/getByCategory');
+const { postProduct } = require('../Controllers/RouterFunctions/Products/PostProducts');
 const router = Router();
 
 router.get('/:productID', getProductById);
-
-router.get('/', getProducts);
 
 router.get('/', (req, res, next)=>{
     const {search, minPrice, maxPrice, category} = req.query;
@@ -17,6 +15,8 @@ router.get('/', (req, res, next)=>{
     }
     if (minPrice && maxPrice){
         return getProductByRankPrice(req,res,next)
+    }else{
+      return getProducts(req, res, next)
     }
     if (category){
         return getByCategory(req,res,next)
