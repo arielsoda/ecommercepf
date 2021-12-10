@@ -15,7 +15,6 @@ const filterProds =  async (product, category)=>{
     const brand = product.attributes.filter(elem=>elem.id ==="BRAND")[0].value_name.toLowerCase();
     const otherData = await axios.get(`${ID_ENDPOINT}${id}`);
 
-
     //[Obtengo el tumbnail de 320x320 
     const thumbnailId = otherData.data.pictures[0].id
     //! console.log("THUMBNAIL ID: ", thumbnailId);
