@@ -1,21 +1,25 @@
-const { getProduct } = require('../Controllers/RouterFunctions/Products/GetProducts');
-
+const {Router} = require('express');
+const {getProducts} = require('../Controllers/RouterFunctions/Products/GetProducts');
+const {getProductById} = require('../Controllers/RouterFunctions/Products/getProductById');
+const {getProductBySearch} = require('../Controllers/RouterFunctions/Products/getProductBySearch');
+const {getProductByRankPrice} = require('../Controllers/RouterFunctions/Products/getProductByRankPrice');
 const { postProduct } = require('../Controllers/RouterFunctions/Products/PostProducts');
+const router = Router();
 
-const { deleteProduct } = require('../Controllers/RouterFunctions/Products/DeleteProduct')
+router.get('/:productID', getProductById);
 
-const { editProduct } = require('../Controllers/RouterFunctions/Products/EditProduct')
+router.get('/',getProducts, (req, res, next)=>{
+    const {search, minPrice, maxPrice} = req.query;
+    if (search){
+        return getProductBySearch(req,res,next)
+    }
+    if (minPrice && maxPrice){
+        return getProductByRankPrice(req,res,next)
+    }else{
+      return getProducts(req, res, next)
+    }
+});
 
-const { Router } = require('express');
-const route = Router();
-
-
-
-route.get('/',getProduct);
 route.post('/',postProduct);
-route.delete('/:id',deleteProduct);
-route.put('/:id',editProduct)
 
-
-
-module.exports= route;
+module.exports= router;
