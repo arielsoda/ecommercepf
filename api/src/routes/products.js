@@ -4,7 +4,14 @@ const {getProductById} = require('../Controllers/RouterFunctions/Products/getPro
 const {getProductBySearch} = require('../Controllers/RouterFunctions/Products/getProductBySearch');
 const {getProductByRankPrice} = require('../Controllers/RouterFunctions/Products/getProductByRankPrice');
 const { postProduct } = require('../Controllers/RouterFunctions/Products/PostProducts');
+const { deleteProduct } = require('../Controllers/RouterFunctions/Products/DeleteProduct');
+const { editProduct } = require('../Controllers/RouterFunctions/Products/EditProduct');
 const router = Router();
+
+
+
+
+
 
 router.get('/:productID', getProductById);
 
@@ -21,5 +28,10 @@ router.get('/',getProducts, (req, res, next)=>{
 });
 
 router.post('/',postProduct);
+
+
+router.delete('/:id',deleteProduct);
+router.put('/:id',editProduct)
+
 
 module.exports= router;
