@@ -9,13 +9,9 @@ const { editProduct } = require('../Controllers/RouterFunctions/Products/EditPro
 const router = Router();
 
 
-
-
-
-
 router.get('/:productID', getProductById);
 
-router.get('/',getProducts, (req, res, next)=>{
+router.get('/', (req, res, next)=>{
     const {search, minPrice, maxPrice} = req.query;
     if (search){
         return getProductBySearch(req,res,next)
