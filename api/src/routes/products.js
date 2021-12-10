@@ -10,16 +10,17 @@ router.get('/:productID', getProductById);
 
 router.get('/', (req, res, next)=>{
     const {search, minPrice, maxPrice, category} = req.query;
+    
     if (search){
-        return getProductBySearch(req,res,next)
+        return getProductBySearch(req,res,next);
     }
     if (minPrice && maxPrice){
-        return getProductByRankPrice(req,res,next)
-    }else{
-      return getProducts(req, res, next)
+        return getProductByRankPrice(req,res,next);
     }
     if (category){
-        return getByCategory(req,res,next)
+        return getByCategory(req,res,next);
+    }else{
+        return getProducts(req,res,next);
     }
 });
 
