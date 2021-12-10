@@ -1,4 +1,5 @@
 const {Router} = require('express');
+const {getProducts} = require('../Controllers/RouterFunctions/Products/GetProducts');
 const {getProductById} = require('../Controllers/RouterFunctions/Products/getProductById');
 const {getProductBySearch} = require('../Controllers/RouterFunctions/Products/getProductBySearch');
 const {getProductByRankPrice} = require('../Controllers/RouterFunctions/Products/getProductByRankPrice');
@@ -6,6 +7,9 @@ const {getByCategory} =require('../Controllers/RouterFunctions/Products/getByCat
 const router = Router();
 
 router.get('/:productID', getProductById);
+
+router.get('/', getProducts);
+
 router.get('/', (req, res, next)=>{
     const {search, minPrice, maxPrice, category} = req.query;
     if (search){
@@ -19,5 +23,6 @@ router.get('/', (req, res, next)=>{
     }
 });
 
+router.post('/',postProduct);
 
 module.exports= router;
