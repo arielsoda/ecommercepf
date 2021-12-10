@@ -32,7 +32,6 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Category, Order, Product, User, Cart, Details, Brand, CategoryBrand} = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
 
 //Cada usuario puede guardar en su carrito muchos productos, y estos productos pueden ser los mismos para distintos usuarios
 Product.belongsToMany(User, { through: Cart , foreignKey:"ProductId"}); //users
@@ -49,12 +48,6 @@ Brand.belongsToMany(Category, { through: "categoryBrand", foreignKey:"BrandId"})
 //Cada producto tiene un único par categoría-Marca, pero muchos productos pueden tener el mismo
 CategoryBrand.hasMany(Product, {as:"relation", foreignKey:{name:"idRelation",type: DataTypes.UUID,}}); //relation
 Product.belongsTo(CategoryBrand, {foreignKey:{ name:"idRelation", type: DataTypes.UUID, },as:"relation"}); //categoryBrand
-
-// Tutorial.hasMany(Comment, { as: "comments" });
-// Comment.belongsTo(Tutorial, {
-//   foreignKey: "tutorialId",
-//   as: "tutorial",
-// });
 
 
 
