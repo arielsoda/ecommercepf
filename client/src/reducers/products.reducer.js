@@ -8,7 +8,8 @@ import{ GET_ALL_PRODUCTS,
         SORT_PRODUCTS,
         CREATE_CATEGORY,
         CREATE_PRODUCT,
-        FILTERS_CLEAR
+        FILTERS_CLEAR,
+        GET_PRODUCT_ID
     } from '../actions/actionsTypes'
 
 const initialState = {
@@ -33,7 +34,7 @@ export function productsReducer(state = initialState, action){
                 allProducts: action.payload
             };
 
-        case GET_PRODUCT_DETAIL:
+        case GET_PRODUCT_ID:
             return {
                 ...state,
                 allProducts: action.payload,
