@@ -1,7 +1,7 @@
 
 import { GET_ALL_PRODUCTS, 
          GET_PRODUCT_BY_NAME,
-         GET_PRODUCT_BY_ID,
+        
          } from "./actionsTypes";
 import axios from 'axios';
 
@@ -36,16 +36,3 @@ export function getProductByName(name) {
     }
 }
 
-export function getProductById(id) {
-    return async function(dispatch){
-        try{
-            const product = await axios.get(`${SERVER}/products/${id}`)
-            return dispatch({
-                type: GET_PRODUCT_BY_ID,
-                payload: product.data
-            })
-        }catch(err){
-            console.log(err)
-        }
-    }
-}
