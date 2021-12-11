@@ -30,7 +30,7 @@ export default function SearchBar(){
                 className={s.input}
                 type='text'
                 value={name}
-                onChange={(e) => handleChange(e)}
+                onChange={handleChange}
                 placeholder='Product Name...'
             />
             <button
