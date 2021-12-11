@@ -3,8 +3,8 @@
    height: 430px;
    border: solid 1px gray;
    border-radius: 15px;
-   flex-wrap: wrap;/* 
-   overflow: hidden; */
+   flex-wrap: wrap;
+   margin: 0 20px;
    margin-bottom: 80px;
 }
 .container{

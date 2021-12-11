@@ -1,11 +1,12 @@
 import React from 'react'
 import s from '../assets/styles/ProductCard.module.css'
+import { Link } from "react-router-dom"
 function ProductCard({ id , name , price , image}) {
    return (
       <div className={s.card}> 
          <div className={s.container}> 
             <div className={s.imgcont}>
-               <img className={s.img} src={image} alt={`Imagen de ${name}`}/>
+            <Link to={`/detail/${id}`}><img className={s.img} src={image} alt={`Imagen de ${name}`}/></Link>
             </div>
             <div className={s.actions}>
                <p className={s.price}>{`$${price} USD`}</p>
@@ -13,7 +14,7 @@ function ProductCard({ id , name , price , image}) {
                <button className={`${s.btn}`}>Agregar al carrito</button>
             </div>
             <div className={s.namecont}>
-                  <p className={s.name}><strong>{name}</strong></p>
+                  <Link to={`/detail/${id}`}><p className={s.name}><strong>{name}</strong></p></Link>
             </div>
          </div>
       </div>

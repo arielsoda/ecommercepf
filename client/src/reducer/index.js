@@ -17,7 +17,7 @@ function reducer(state = initialState, action){
         case GET_PRODUCT_BY_NAME:
             return {
                 ...state,
-                filters: action.payload
+                allProducts: action.payload
             };
         default:
             return state;

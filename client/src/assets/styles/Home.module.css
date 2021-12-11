@@ -1,7 +1,20 @@
 .container{
+   display: flex;
+   flex-direction: column;
+}
+
+.search{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   margin-bottom: 30px;
+   font-size: 30px;
+   text-align: center;
+}
+.cards{
    max-width: 100%;
    height: auto;
-   /* min-height: 100vh; */
+   min-height: 100vh;
    background-color: rgb(230, 220, 189);
    display: flex;
    justify-content: space-evenly;

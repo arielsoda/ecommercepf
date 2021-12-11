@@ -1,19 +1,23 @@
 
+.container{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
 .input{
-    height: 25px;
-    width: 60%;
+    height: 30px;
+    width: 80%;
     background-color: rgb(235, 238, 225);
     border: 2px solid rgb(35, 126, 245);
-    border-radius: 8px;
+    padding: 0 10px;
+
 }
 
 .btn{
-    height: 30px;
-    width: 20%;
+    height: 35px;
+    width: 29%;
     background-color: rgb(35, 126, 245);
-    border: 2px solid rgb(188, 226, 221);
-    border-radius: 8px;
-   
+    border: 2px solid rgb(188, 226, 221);   
 }
 
 .btn:hover{
