@@ -1,8 +1,9 @@
 const {Router} = require('express');
 const {getProducts} = require('../Controllers/RouterFunctions/Products/GetProducts');
-const {getProductById} = require('../Controllers/RouterFunctions/Products/getProductById');
-const {getProductBySearch} = require('../Controllers/RouterFunctions/Products/getProductBySearch');
-const {getProductByRankPrice} = require('../Controllers/RouterFunctions/Products/getProductByRankPrice');
+const {getProductById} = require('../Controllers/RouterFunctions/Products/GetProductById');
+const {getProductBySearch} = require('../Controllers/RouterFunctions/Products/GetProductBySearch');
+const {getProductByRankPrice} = require('../Controllers/RouterFunctions/Products//GetProductByRankPrice');
+const {getByCategory} = require('../Controllers/RouterFunctions/Products/GetByCategory');
 const { postProduct } = require('../Controllers/RouterFunctions/Products/PostProducts');
 const router = Router();
 
