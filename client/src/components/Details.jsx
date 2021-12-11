@@ -5,16 +5,16 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import {faHeart as Heartwhite } from '@fortawesome/free-regular-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getProductById } from '../actions/index.js'
+import { getProductId } from '../actions/index.js'
 
 const Details = () => {
     const dispatch = useDispatch();
     const {idproduct} = useParams();
-    const product = useSelector(state => state.product[0])
+    const product = useSelector(state => state.productsReducer.productDetail[0])
     let [nimg,setNimg] = useState(0);
     //let nimg=0;
     useEffect(() => {
-       dispatch(getProductById(idproduct));
+       dispatch(getProductId(idproduct));
     }, [dispatch])
 
     function changeImage(type){

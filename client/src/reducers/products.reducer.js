@@ -116,11 +116,11 @@ export function productsReducer(state = initialState, action){
             filters: sorts
         };
 
-        case FILTERS_CLEAR:
+        /* case FILTERS_CLEAR:
             return {
                 ...state,
                 filters: allProducts
-            }
+            } */
 
         default:
             return state;

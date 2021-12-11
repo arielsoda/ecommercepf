@@ -15,19 +15,19 @@ import axios from 'axios';
 
 const SERVER = 'http://localhost:3001';
 
-    // export function getAllProducts() {
-    //     return async function(dispatch){
-    //         try{
-    //             const products = await axios.get('http://localhost:3001/products');
-    //             return dispatch({
-    //                 type: GET_ALL_PRODUCTS,
-    //                 payload: products.data
-    //             });
-    //         }catch(err){
-    //             console.log(err)
-    //         }
-    //     }
-    // };
+    export function getAllProducts() {
+        return async function(dispatch){
+            try{
+                const products = await axios.get(`${SERVER}/products`);
+                return dispatch({
+                    type: GET_ALL_PRODUCTS,
+                    payload: products.data.productsInfo
+                });
+            }catch(err){
+                console.log(err)
+            }
+        }
+    };
 
     // export function getProductByName() {
     //     return async function(dispatch){
@@ -95,7 +95,7 @@ const SERVER = 'http://localhost:3001';
         
 
 
-export function getAllProducts() {
+/* export function getAllProducts() {
     return async function(dispatch){
         try{
             const products = await axios.get(`${SERVER}/products`);
@@ -108,7 +108,7 @@ export function getAllProducts() {
             console.log(err)
         }
     }
-}
+} */
 
 export function getProductByName(name) {
     return async function(dispatch){

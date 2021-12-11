@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 
 const Home = () => {
     const dispatch = useDispatch();
-    const products = useSelector((state) => state.allProducts)
+    const products = useSelector((state) => state.productsReducer.allProducts)
     const {search=null} = useParams();
     useEffect(()=>{
         console.log(search)
