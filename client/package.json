@@ -12,6 +12,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "axios": "^0.24.0",
     "cra-template": "1.1.2",
+    "dotenv": "^10.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",

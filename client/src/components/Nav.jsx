@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { useGoogleLogout } from 'react-google-login'; 
 import { logOut } from '../actions';
 import Swal from 'sweetalert2';
+import SearchBar from './SearchBar'
+import logo from '../assets/img/logo-ecommerce.png'
 
 const Nav = () => {
     const session = useSelector(state => state.loginInfo);
@@ -28,8 +30,9 @@ const Nav = () => {
     return (
         <header className={s.container}>
             <nav className={s.options}>
-                <img className={s.logo} src="https://www.seekpng.com/png/detail/428-4289671_logo-e-commerce-good-e-commerce-logo.png" alt="logo ecommerce" />
-                <input className={s.search} type="text" placeholder="Ingrese el producto a buscar"></input>
+               
+                <img className={s.logo} src={logo} onClick={()=>{window.location='/'}} alt="logo ecommerce"/> 
+                <SearchBar />
                 <div className={s.buttons}>
                     {session.isConnected ? <>
                         <h1>{session.user.name}</h1>

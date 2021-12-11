@@ -7,6 +7,7 @@ import {Auth0Provider} from "@auth0/auth0-react";
 import './index.css';
 
 import App from './App';
+<<<<<<< HEAD
 import store from "./store";
 
 ReactDOM.render(
@@ -18,6 +19,19 @@ ReactDOM.render(
         </BrowserRouter>
       </Provider>
     </Auth0Provider>
+=======
+import {BrowserRouter} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import store from './store/index'
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+>>>>>>> origin/develop-fran
   </React.StrictMode>,
   document.getElementById('root')
 );
