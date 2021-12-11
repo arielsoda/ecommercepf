@@ -15,7 +15,8 @@ const getProductById = async (req, res, next) => {
                 name: product.name,
                 price: product.price,
                 stock: product.stock,
-                image: product.image
+                image: product.image,
+                attributes: product.attributes
             }
         }));
     })

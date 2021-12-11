@@ -2,7 +2,6 @@ const {Product} = require('../../../db');
 
 const getProductBySearch = async (req, res, next) => {
     const {search} = req.query;
-    console.log(search)
     const productDb = await Product.findAll()
     .then(product => {
         let resProduct = product;
