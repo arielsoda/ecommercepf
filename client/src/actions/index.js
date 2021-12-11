@@ -1,44 +1,47 @@
+
 import { GET_ALL_PRODUCTS, 
-         GET_PRODUCT_BY_NAME,
-         GET_PRODUCT_ID,
-         GET_ALL_CATEGORIES,
-         FILTER_PRODUCTS_BY_CATEGORY,
-         FILTER_PRODUCTS_BY_PRICE,
-         FILTER_PRODUCTS_BY_BRANDS,
-         SORT_PRODUCTS,
-         CREATE_CATEGORY,
-         CREATE_PRODUCT,
-         FILTERS_CLEAR
+    GET_PRODUCT_BY_NAME,
+    GET_PRODUCT_ID,
+    GET_ALL_CATEGORIES,
+    FILTER_PRODUCTS_BY_CATEGORY,
+    FILTER_PRODUCTS_BY_PRICE,
+    FILTER_PRODUCTS_BY_BRANDS,
+    SORT_PRODUCTS,
+    CREATE_CATEGORY,
+    CREATE_PRODUCT,
+    FILTERS_CLEAR
 } from "./actionsTypes";
 import axios from 'axios';
 
-    export function getAllProducts() {
-        return async function(dispatch){
-            try{
-                const products = await axios.get('http://localhost:3001/products');
-                return dispatch({
-                    type: GET_ALL_PRODUCTS,
-                    payload: products.data
-                });
-            }catch(err){
-                console.log(err)
-            }
-        }
-    };
+const SERVER = 'http://localhost:3001';
 
-    export function getProductByName() {
-        return async function(dispatch){
-            try{
-                const product = await axios.get(`http://localhost:3001/products?name=''`)
-                return dispatch({
-                    type: GET_PRODUCT_BY_NAME,
-                    payload: product.data
-                })
-            }catch(err){
-                console.log(err)
-            }
-        }
-    };
+    // export function getAllProducts() {
+    //     return async function(dispatch){
+    //         try{
+    //             const products = await axios.get('http://localhost:3001/products');
+    //             return dispatch({
+    //                 type: GET_ALL_PRODUCTS,
+    //                 payload: products.data
+    //             });
+    //         }catch(err){
+    //             console.log(err)
+    //         }
+    //     }
+    // };
+
+    // export function getProductByName() {
+    //     return async function(dispatch){
+    //         try{
+    //             const product = await axios.get(`http://localhost:3001/products?name=''`)
+    //             return dispatch({
+    //                 type: GET_PRODUCT_BY_NAME,
+    //                 payload: product.data
+    //             })
+    //         }catch(err){
+    //             console.log(err)
+    //         }
+    //     }
+    // };
 
     export function getProductId(idProduct) {
         return async function(dispatch){
@@ -71,7 +74,7 @@ import axios from 'axios';
 
     export function createCategory(payload){
         return async function (dispatch){
-            const newCategory = await axios.post( ,payload)
+            const newCategory = await axios.post( '',payload)
             return dispatch ({
                 type: CREATE_CATEGORY,
                 payload: newCategory
@@ -81,13 +84,45 @@ import axios from 'axios';
 
     export function createProduct(payload){
         return async function (dispatch){
-            const newProduct = await axios.post( ,payload)
+            const newProduct = await axios.post('' ,payload)
             return dispatch ({
                 type: CREATE_PRODUCT,
                 payload: newProduct
             })
         }
-    };
+    }
+        
+        
+
+
+export function getAllProducts() {
+    return async function(dispatch){
+        try{
+            const products = await axios.get(`${SERVER}/products`);
+            console.log(products.data.productsInfo)
+            return dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: products.data.productsInfo
+            });
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
+
+export function getProductByName(name) {
+    return async function(dispatch){
+        try{
+            const product = await axios.get(`${SERVER}/products?search=${name}`)
+            return dispatch({
+                type: GET_PRODUCT_BY_NAME,
+                payload: product.data
+            })
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
 
     export function filterByCategory(payload){
         return {
@@ -122,3 +157,5 @@ import axios from 'axios';
             type: FILTERS_CLEAR
         }
     }
+
+

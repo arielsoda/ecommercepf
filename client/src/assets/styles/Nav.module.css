@@ -17,7 +17,8 @@
     align-items: center;
 }
 .logo{
-    height: 70px;
+    height: 90px;
+    cursor: pointer;
 }
 .search{
     height: 40px;

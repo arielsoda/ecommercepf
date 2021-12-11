@@ -30,7 +30,7 @@ export function productsReducer(state = initialState, action){
         case GET_PRODUCT_BY_NAME:
             return {
                 ...state,
-                filters: action.payload
+                allProducts: action.payload
             };
 
         case GET_PRODUCT_DETAIL:
