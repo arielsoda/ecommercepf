@@ -1,7 +1,6 @@
 import React from 'react';
 import s from '../assets/styles/Details.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import {faHeart as Heartwhite } from '@fortawesome/free-regular-svg-icons'
 
 const Details = () => {

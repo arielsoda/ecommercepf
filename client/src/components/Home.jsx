@@ -2,10 +2,8 @@ import s from "../assets/styles/Home.module.css";
 import Card from './ProductCard.jsx'
 import {useState} from 'react';
 
-import { Link } from "react-router-dom"
-
 const Home = () => {
-    const [state,setState] = useState([
+    const [state] = useState([
         {
             id:1,
             name: 'Xiaomi Note 10 Pro 128GB 6GB RAM Bronze',
