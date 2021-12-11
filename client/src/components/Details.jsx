@@ -35,7 +35,7 @@ const Details = () => {
                 <div className={`${s.subcontainer} ${s.details}`}>
                     <button className={s.btnfav}><FontAwesomeIcon icon={Heartwhite} /></button>
                     <h2 className={s.prodname}>{product.name}</h2>
-                    <p className={s.prodprice}>{`${product.price} USD`}</p>
+                    <p className={s.prodprice}>{`$${product.price} ARS`}</p>
                     {product.stock>0?<div className={s.grupcount}>
                         <label>Cantidad</label>
                         <input type="number" min="1" max={product.stock}/>
