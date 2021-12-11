@@ -90,11 +90,8 @@ const SERVER = 'http://localhost:3001';
                 payload: newProduct
             })
         }
-    }
+    };
         
-        
-
-
 export function getAllProducts() {
     return async function(dispatch){
         try{

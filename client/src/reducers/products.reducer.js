@@ -9,7 +9,6 @@ import{ GET_ALL_PRODUCTS,
         CREATE_CATEGORY,
         CREATE_PRODUCT,
         FILTERS_CLEAR,
-        GET_PRODUCT_ID
     } from '../actions/actionsTypes'
 
 const initialState = {
@@ -119,7 +118,7 @@ export function productsReducer(state = initialState, action){
         case FILTERS_CLEAR:
             return {
                 ...state,
-                filters: allProducts
+                filters: state.allProducts
             }
 
         default:
