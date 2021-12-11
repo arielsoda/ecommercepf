@@ -1,8 +1,11 @@
 import{ GET_ALL_PRODUCTS, 
-    GET_PRODUCT_BY_NAME } from '../actions/actionsTypes'
+    GET_PRODUCT_BY_NAME,
+    GET_PRODUCT_BY_ID
+} from '../actions/actionsTypes'
 
 const initialState = {
     allProducts: [], 
+    product:[],
     filters: []
 }
 
@@ -18,6 +21,11 @@ function reducer(state = initialState, action){
             return {
                 ...state,
                 allProducts: action.payload
+            };
+        case GET_PRODUCT_BY_ID:
+            return {
+                ...state,
+                product: action.payload
             };
         default:
             return state;
