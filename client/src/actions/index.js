@@ -1,16 +1,14 @@
-<<<<<<< HEAD
 // actions
-export const DO_SOMETHING = "DO_SOMETHING";
-export const LOGIN = "LOGIN";
-export const LOGOUT = "LOGOUT";
+import { 
+    GET_ALL_PRODUCTS, 
+    GET_PRODUCT_BY_NAME,
+    LOGIN,
+    LOGOUT
+} from "./actionsTypes";
 
-// actions cretors
-export function doSomething(payload){
-    return{
-        payload,
-        type: DO_SOMETHING
-    }
-}
+import axios from 'axios';
+
+const SERVER = 'http://localhost:3001';
 
 export function login(payload){
     let res = null;
@@ -53,15 +51,7 @@ export function logOut(){
     }
     
 }
-=======
 
-import { GET_ALL_PRODUCTS, 
-         GET_PRODUCT_BY_NAME,
-        
-         } from "./actionsTypes";
-import axios from 'axios';
-
-const SERVER = 'http://localhost:3001';
 
 export function getAllProducts() {
     return async function(dispatch){
@@ -92,4 +82,3 @@ export function getProductByName(name) {
     }
 }
 
->>>>>>> origin/develop-fran
