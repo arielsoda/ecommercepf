@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
+import s from '../assets/styles/Filters.module.css'
 import {
     getAllProducts,
     getCategories,
@@ -16,7 +17,7 @@ function Filters() {
      const [,setSort] = useState('')
     
      return (
-        <div>
+        <div className={s.container}>
             
         </div>
     )

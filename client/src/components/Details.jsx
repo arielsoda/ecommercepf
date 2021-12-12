@@ -5,6 +5,7 @@ import {faHeart as Heartwhite } from '@fortawesome/free-regular-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getProductId } from '../actions/index.js'
+import { Slide } from 'react-slideshow-image'
 
 const Details = () => {
     const dispatch = useDispatch();
@@ -24,12 +25,12 @@ const Details = () => {
         {product?<div className={s.container}>
             <div className={s.data}>
                 <div className={`${s.subcontainer} ${s.imgcontainer}`}>
-                    <div className={s.images}>
-                        {product.image.map((image, i)=>(
-                        <div key={i} className={s.image}><img  src={image} alt="Producto"/></div>))}
-                    </div>
-                    <button onClick={()=>changeImage('min')} className={`${s.btnimg} ${s.imgleft}`} >{`<`}</button>
-                    <button onClick={()=>changeImage('plus')} className={`${s.btnimg} ${s.imgrigth}`} >{`>`}</button>
+                    <Slide>
+                        <div className={s.images}>
+                            {product.image.map((image, i)=>(
+                            <div key={i} className={s.image}><img  src={image} alt="Producto"/></div>))}
+                        </div>
+                    </Slide>
                 </div>
                 <div className={`${s.subcontainer} ${s.details}`}>
                     <button className={s.btnfav}><FontAwesomeIcon icon={Heartwhite} /></button>

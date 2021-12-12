@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import {useDispatch , useSelector} from 'react-redux';
 import { getAllProducts, getProductByName } from '../actions/index.js'
 import { useParams } from "react-router-dom";
-
+import Filters from "./Filters.jsx";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -21,6 +21,7 @@ const Home = () => {
 
     return (
         <div className={s.container}>
+            <Filters/>
             <div className={s.cards}>
                 {search?<div className={s.search}><p>Resultados de busqueda de: <strong>{search}</strong></p></div>:null}
                 {products.length>0?products.map((prod,i)=><Card key={i} id={prod.idProduct} name={prod.name} price={prod.price} image={prod.thumbnail}/>):<div></div>}
