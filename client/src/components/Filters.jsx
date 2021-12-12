@@ -43,7 +43,8 @@ function Filters() {
          setSort(e.target.value)
      }
      return (
-        <div >
+        
+        <div className={s.container}>
             <select 
             name='category'
             onChange={handleFilterByCategory}>
@@ -101,16 +102,26 @@ function Filters() {
                 <opcion value='gadnic'>Gadnic</opcion>
                 <opcion value='dt no.1'>Dt no.1</opcion>
             </select>
+            {/* <select key={filters.idProduct}
+                name='brand'
+                onChange={handleFilterByBrand}>
+                    <option value=''>Select Brand</option>
+                   {/*  {filters?filters.map((p) => {
+                        return(
+                        <option key={p.idProduct} value={p.idProduct}>{p.brand}</option>
+                    )}) :('Brand is not Found')} 
+            </select> */}
+            <select
+                name='Sorts'
+                onChange={handleSortProducts}>
+                <option value='All'>Sorts</option>
+                <option value='A-Z'>Brands A-Z</option>
+                <option value='Z-A'>Brands Z-A</option>
+                <option value='Lower_price'>Lower Price</option>
+                <option value='Highest_price'>Highest_price</option>
+            </select>
+
             
-                   <select key={filters.idProduct}
-                        name='Sorts'
-                        onChange={handleSortProducts}>
-                        <option value='All'>Sorts</option>
-                        <option value='A-Z'>Brands A-Z</option>
-                        <option value='Z-A'>Brands Z-A</option>
-                        <option value='Lower_price'>Lower Price</option>
-                        <option value='Highest_price'>Highest_price</option>
-                    </select>
         </div>
     )
 }

@@ -5,4 +5,14 @@
    /* margin-top: 100px; */
    margin-bottom: 30px;
    border-bottom: solid 2px gray;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+
+.container select{
+   width: 150px;
+   height: 30px;
+   font-size: 12px;
+   
 }
