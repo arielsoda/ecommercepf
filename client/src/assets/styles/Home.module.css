@@ -12,11 +12,12 @@
    margin-bottom: 30px;
    font-size: 30px;
    text-align: center;
+   max-height: 30px;
 }
 .cards{
    max-width: 100%;
    height: auto;
-   min-height: 100vh;
+   min-height: 75vh;
    background-color: rgb(230, 220, 189);
    display: flex;
    justify-content: space-evenly;
@@ -40,4 +41,5 @@
 .notfound p{
    font-size: 50px;
    text-align: center;
+   margin-bottom: 20px;;
 }
