@@ -26,8 +26,10 @@ const SERVER = 'http://localhost:3001';
                     payload: products.data
                 });
             }catch(err){
-                console.log(err)
-            }
+                return dispatch({
+                    type: GET_ALL_PRODUCTS,
+                    payload: []
+            })}
         }
     };
 
@@ -40,10 +42,7 @@ const SERVER = 'http://localhost:3001';
                     payload: detail.data
                 })     
             }catch(err){
-                return dispatch({
-                    type: GET_PRODUCT_ID,
-                    payload: []
-                })     
+                console.log(err)
             }   
         }
     };
@@ -92,11 +91,11 @@ const SERVER = 'http://localhost:3001';
                 })
             }catch(err){
                 return dispatch({
-                    type: GET_PRODUCT_ID,
+                    type: GET_PRODUCT_BY_NAME,
                     payload: []
-            }
+            })}
         }
-    }
+    };
 
     export function filterByCategory(payload){
         return {
