@@ -43,8 +43,16 @@ function Filters() {
          setSort(e.target.value)
      }
      return (
+        
         <div className={s.container}>
-            <select key={filters.idProduct}
+            <select 
+                name='items'
+                onChange={handleFilterByCategory}>
+                    <option value='15'>15 Products</option>
+                    <option value='25'>25 Products</option>
+                    <option value='50'>50 Products</option>
+            </select>
+            <select 
                 name='category'
                 onChange={handleFilterByCategory}>
                     <option value='All'>Select Your Category</option>
@@ -53,16 +61,16 @@ function Filters() {
                         <option key={p.idProduct} value={p.idProduct}>{p.idProduct.category}</option>
                     )}):( 'Category is not Found')} */}
             </select>
-            <select key={filters.idProduct}
+            {/* <select key={filters.idProduct}
                 name='brand'
                 onChange={handleFilterByBrand}>
                     <option value=''>Select Brand</option>
                    {/*  {filters?filters.map((p) => {
                         return(
                         <option key={p.idProduct} value={p.idProduct}>{p.brand}</option>
-                    )}) :('Brand is not Found')} */}
-            </select>
-            <select key={filters.idProduct}
+                    )}) :('Brand is not Found')} 
+            </select> */}
+            <select
                 name='Sorts'
                 onChange={handleSortProducts}>
                 <option value='All'>Sorts</option>
