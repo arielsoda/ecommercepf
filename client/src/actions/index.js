@@ -40,7 +40,10 @@ const SERVER = 'http://localhost:3001';
                     payload: detail.data
                 })     
             }catch(err){
-                console.log(err)
+                return dispatch({
+                    type: GET_PRODUCT_ID,
+                    payload: []
+                })     
             }   
         }
     };
@@ -88,7 +91,9 @@ const SERVER = 'http://localhost:3001';
                     payload: product.data
                 })
             }catch(err){
-                console.log(err)
+                return dispatch({
+                    type: GET_PRODUCT_ID,
+                    payload: []
             }
         }
     }
@@ -100,10 +105,10 @@ const SERVER = 'http://localhost:3001';
         }
     };
 
-    export function filterByPrice(min, max){ //ver si tengo ruta
+    export function filterByPrice(payload){ //ver si tengo ruta
         return{
             type: FILTER_PRODUCTS_BY_PRICE,
-            payload: {min, max}
+            payload
         }
     }
 
