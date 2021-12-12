@@ -94,7 +94,7 @@ export function productsReducer(state = initialState, action){
 
         case SORT_PRODUCTS:
             let sorts;
-            if(action.payload === 'All') sorts=  state.allProducts;
+            if(action.payload === 'All') sorts= state.productReducer.allProducts
             if(action.payload === 'A-Z'){  //alpha
                 sorts = state.filters.sort((a,b) => {
                     if(a.name > b.name) return 1;
@@ -136,11 +136,11 @@ export function productsReducer(state = initialState, action){
                 loginInfo: action.payload
             }
 
-        /* case FILTERS_CLEAR:
+        case FILTERS_CLEAR:
             return {
                 ...state,
                 filters: allProducts
-            } */
+            } 
 
         default:
             return state;

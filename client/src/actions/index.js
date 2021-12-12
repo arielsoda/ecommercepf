@@ -50,7 +50,7 @@ const SERVER = 'http://localhost:3001';
     export function getCategories(){
         return async function(dispatch){
             try{
-                const categories= await axios.get('http://localhost:3001/categories')
+                const categories= await axios.get('http://localhost:3001/categories?all=true')
                 return dispatch({
                     type: GET_ALL_CATEGORIES,
                     payload: categories.data

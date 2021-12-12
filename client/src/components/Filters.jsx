@@ -61,7 +61,7 @@ function Filters() {
                 <opcion value='samsung'>Samsung</opcion>
                 <opcion value='motorola'>Motorola</opcion>
                 <opcion value='cat'>Cat</opcion>
-                <opcion value=' nokia'>Nokia</opcion>
+                <opcion value='nokia'>Nokia</opcion>
                 <opcion value='lg'>Lg</opcion>
                 <opcion value='Kodak'>Kodak</opcion>
                 <opcion value='ipro'>Ipro</opcion>
@@ -85,52 +85,21 @@ function Filters() {
                 <opcion value='noblex'>Noblex</opcion>
                 <opcion value='blu - ipro - nokia - generico'>Blu - ipro - nokia - generico</opcion>
                 <opcion value='luo'>Luo</opcion>
-                <opcion value=''
-
-      29 | luo
-      30 | microsoft
-      31 | imilab
-      32 | microwear
-      33 | amazfit
-      34 | nictom
-      35 | colmi
-      36 | ruffo
-      37 | y9
-      38 | genÚrica
-      39 | huawei
-      40 | noga
-      41 | you
-      42 | skmei
-      43 | tedge
-      44 | gadnic
-      45 | dt no.1
-      46 | smartwatches
-      47 | soundpeats
-      48 | oem
-      49 | h8
-      50 | ztx
-      51 | dtn1
-      52 | kingwear
-      53 | dt no.i
-      54 | x-view
-      55 | fitbit
-      56 | garmin argentina
-      57 | jean cartier
-      58 | tecnocenter
-      59 | honor
-      60 | daikon
-      61 | bgh
-      62 | telefunken
-      63 | hitachi
-      64 | hyundai
-      65 | philips
-      66 | enova
-      67 | iqual
-      68 | jvc
-      69 | hisense
-      70 | kanji
-      71 | aoc
-      72 | sanyo
+                <opcion value='microsoft'>Microsoft</opcion>
+                <opcion value='imilab'>Imilab</opcion>
+                <opcion value='microwear'>Microwear</opcion>
+                <opcion value='amazfit'>Amazfit</opcion>
+                <opcion value='Nictom'>Nictom</opcion>
+                <opcion value='colmi'>Colmi</opcion>
+                <opcion value='ruffo'>Ruffo</opcion>
+                <opcion value='y9'>Y9</opcion>
+                <opcion value='huawei'>Huawei</opcion>
+                <opcion value='noga'>Noga</opcion>
+                <opcion value='you'>You</opcion>
+                <opcion value='skmei'>Skemi</opcion>
+                <opcion value='tedge'>Tedge</opcion>
+                <opcion value='gadnic'>Gadnic</opcion>
+                <opcion value='dt no.1'>Dt no.1</opcion>
             </select>
             
                    <select key={filters.idProduct}
