@@ -17,10 +17,10 @@ import axios from 'axios';
 const SERVER = 'http://localhost:3001';
 
 
-    export function getAllProducts(offset, limit) {
+    export function getAllProducts(offset=0, limit=25) {
         return async function(dispatch){
             try{
-                const products = await axios.get(`${SERVER}/products?offset=""&limit=""`);
+                const products = await axios.get(`${SERVER}/products?offset=${offset}&limit=${limit}`);
                 return dispatch({
                     type: GET_ALL_PRODUCTS,
                     payload: products.data
