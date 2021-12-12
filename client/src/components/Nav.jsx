@@ -10,7 +10,7 @@ import SearchBar from './SearchBar'
 import logo from '../assets/img/logo-ecommerce.png'
 
 const Nav = () => {
-    const session = useSelector(state => state.loginInfo);
+    const session = useSelector(state => state.productsReducer.loginInfo);
     const dispatch = useDispatch();
 
     const {signOut} = useGoogleLogout({
@@ -36,7 +36,7 @@ const Nav = () => {
                 <div className={s.buttons}>
                     {session.isConnected ? <>
                         <h1>{session.user.name}</h1>
-                        <button onClick={() => signOut()}>cerrar sesión</button>
+                        <button className={s.btn} onClick={() => signOut()}>cerrar sesión</button>
                     </> : <>
                         <Link to="/login"><button className={s.btn}>Log In</button></Link>
                         <Link to="/register"><button className={s.btn}>Registrarse</button></Link>

@@ -8,6 +8,13 @@
     top: 0;
 }
 
+.formContainer{
+    padding-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form{
     width: 60%;
     height: 450px;

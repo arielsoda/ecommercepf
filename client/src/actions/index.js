@@ -1,11 +1,17 @@
-// actions
-import { 
-    GET_ALL_PRODUCTS, 
+import { GET_ALL_PRODUCTS, 
     GET_PRODUCT_BY_NAME,
+    GET_PRODUCT_ID,
+    GET_ALL_CATEGORIES,
+    FILTER_PRODUCTS_BY_CATEGORY,
+    FILTER_PRODUCTS_BY_PRICE,
+    FILTER_PRODUCTS_BY_BRANDS,
+    SORT_PRODUCTS,
+    CREATE_CATEGORY,
+    CREATE_PRODUCT,
+    FILTERS_CLEAR,
     LOGIN,
     LOGOUT
 } from "./actionsTypes";
-
 import axios from 'axios';
 
 const SERVER = 'http://localhost:3001';
@@ -23,7 +29,7 @@ export function login(payload){
             var {user} = payload;
             console.log(`http://localhost/login?name=${user.givenName}&email=${user.email}`);
 
-            // res = await axios(`http://localhost/login?name=${payload.user.name}&email=${payload.user.email}`);
+            res = await axios(`http://localhost/login?name=${payload.user.name}&email=${payload.user.email}`);
         }
         
         res = {
@@ -53,7 +59,88 @@ export function logOut(){
 }
 
 
-export function getAllProducts() {
+
+    export function getAllProducts() {
+        return async function(dispatch){
+            try{
+                const products = await axios.get(`${SERVER}/products`);
+                return dispatch({
+                    type: GET_ALL_PRODUCTS,
+                    payload: products.data.productsInfo
+                });
+            }catch(err){
+                console.log(err)
+            }
+        }
+    };
+
+    // export function getProductByName() {
+    //     return async function(dispatch){
+    //         try{
+    //             const product = await axios.get(`http://localhost:3001/products?name=''`)
+    //             return dispatch({
+    //                 type: GET_PRODUCT_BY_NAME,
+    //                 payload: product.data
+    //             })
+    //         }catch(err){
+    //             console.log(err)
+    //         }
+    //     }
+    // };
+
+    export function getProductId(idProduct) {
+        return async function(dispatch){
+            try{
+                const detail= await axios.get(`http://localhost:3001/products/${idProduct}`)
+                return dispatch({
+                    type: GET_PRODUCT_ID,
+                    payload: detail.data
+                })     
+            }catch(err){
+                console.log(err)
+            }   
+        }
+    };
+
+    export function getCategories(){
+        return async function(dispatch){
+            try{
+                const categories= await axios.get('http://localhost:3001/categories')
+                return dispatch({
+                    type: GET_ALL_CATEGORIES,
+                    payload: categories.data
+                })
+            }catch(err){
+                console.log(err)
+            }
+        }
+    };
+
+
+    export function createCategory(payload){
+        return async function (dispatch){
+            const newCategory = await axios.post( '',payload)
+            return dispatch ({
+                type: CREATE_CATEGORY,
+                payload: newCategory
+            })
+        }
+    };
+
+    export function createProduct(payload){
+        return async function (dispatch){
+            const newProduct = await axios.post('' ,payload)
+            return dispatch ({
+                type: CREATE_PRODUCT,
+                payload: newProduct
+            })
+        }
+    }
+        
+        
+
+
+/* export function getAllProducts() {
     return async function(dispatch){
         try{
             const products = await axios.get(`${SERVER}/products`);
@@ -66,7 +153,7 @@ export function getAllProducts() {
             console.log(err)
         }
     }
-}
+} */
 
 export function getProductByName(name) {
     return async function(dispatch){
@@ -81,4 +168,38 @@ export function getProductByName(name) {
         }
     }
 }
+
+    export function filterByCategory(payload){
+        return {
+            type: FILTER_PRODUCTS_BY_CATEGORY,
+            payload
+        }
+    };
+
+    export function filterByPrice(min, max){ //ver si tengo ruta
+        return{
+            type: FILTER_PRODUCTS_BY_PRICE,
+            payload: {min, max}
+        }
+    }
+
+    export function filterProductByBrand(payload){
+        return{
+            type: FILTER_PRODUCTS_BY_BRANDS,
+            payload
+        }
+    }
+
+    export function sortProducts(payload){
+        return {
+            type: SORT_PRODUCTS,
+            payload
+        }
+    };
+
+    export function filtersClear(){
+        return {
+            type: FILTERS_CLEAR
+        }
+    }
 
