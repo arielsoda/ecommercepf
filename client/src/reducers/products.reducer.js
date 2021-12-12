@@ -9,13 +9,24 @@ import{ GET_ALL_PRODUCTS,
         CREATE_CATEGORY,
         CREATE_PRODUCT,
         FILTERS_CLEAR,
+        GET_PRODUCT_ID,
+        LOGIN,
+        LOGOUT
     } from '../actions/actionsTypes'
 
 const initialState = {
     allProducts: [], 
     productDetail: [],
     filters: [],
-    categories: []
+    categories: [],
+    
+    loginInfo:{
+        isConnected: false,
+        user: {
+            name: "",
+            email: ""
+        }
+    }
 }
 
 export function productsReducer(state = initialState, action){   
@@ -115,16 +126,23 @@ export function productsReducer(state = initialState, action){
             filters: sorts
         };
 
+        case LOGIN:
+            return{
+                ...state,
+                loginInfo: action.payload
+            }
+        
+        case LOGOUT:
+            return{
+                ...state,
+                loginInfo: action.payload
+            }
+
         /* case FILTERS_CLEAR:
             return {
                 ...state,
-<<<<<<< HEAD
-                filters: state.allProducts
-            }
-=======
                 filters: allProducts
             } */
->>>>>>> origin/develop-fran
 
         default:
             return state;

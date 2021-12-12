@@ -1,4 +1,3 @@
-
 import { GET_ALL_PRODUCTS, 
     GET_PRODUCT_BY_NAME,
     GET_PRODUCT_ID,
@@ -9,11 +8,57 @@ import { GET_ALL_PRODUCTS,
     SORT_PRODUCTS,
     CREATE_CATEGORY,
     CREATE_PRODUCT,
-    FILTERS_CLEAR
+    FILTERS_CLEAR,
+    LOGIN,
+    LOGOUT
 } from "./actionsTypes";
 import axios from 'axios';
 
 const SERVER = 'http://localhost:3001';
+
+export function login(payload){
+    let res = null;
+    
+    return async (dispatch) => {
+        if(payload.submitType === "login"){
+            // console.log(`http://localhost/login?name=${payload.user.name}&email=${payload.user.email}&password=${payload.user.password}`);
+            
+            // res = await axios(`http://localhost/login?name=${payload.user.name}&email=${payload.user.email}&password=${payload.user.password}`);
+            
+        }else{
+            var {user} = payload;
+            console.log(`http://localhost/login?name=${user.givenName}&email=${user.email}`);
+
+            //res = await axios(`http://localhost/login?name=${payload.user.name}&email=${payload.user.email}`);
+        }
+        
+        res = {
+            isConnected: true,
+            user: {
+                name: user.givenName || "",
+                email: user.email || ""
+            }
+        }
+
+        console.log(res)
+        // res = {status: "failure"}
+
+        return dispatch({
+            type: LOGIN,
+            payload: res
+        })
+    }
+}
+
+export function logOut(){
+    return {
+        type: LOGIN,
+        payload: {isConnected: false}
+    }
+    
+}
+
+
 
     export function getAllProducts() {
         return async function(dispatch){
@@ -156,5 +201,4 @@ export function getProductByName(name) {
             type: FILTERS_CLEAR
         }
     }
-
 

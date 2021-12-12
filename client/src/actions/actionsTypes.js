@@ -9,4 +9,6 @@ export const SORT_PRODUCTS = 'SORT_PRODUCTS';
 export const CREATE_CATEGORY = 'CREATE_CATEGORY';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const FILTERS_CLEAR = 'FILTERS_CLEAR ';
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
 
