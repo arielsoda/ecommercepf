@@ -13,9 +13,12 @@ const Home = () => {
     const products = useSelector((state) => {
             if(Array.isArray(state.productsReducer.allProducts)) return state.productsReducer.allProducts;
         return state.productsReducer.allProducts.productsInfo})
+        /* 
+        Array.isArray(state.productsReducer.allProducts)?state.productsReducer.allProducts: state.productsReducer.allProducts.productsInfo})
+        */
     const {search=null} = useParams();
 
-    
+
     useEffect(()=>{
         console.log(search)
         if(!search)dispatch(getAllProducts())
