@@ -9,7 +9,6 @@ import{ GET_ALL_PRODUCTS,
         CREATE_CATEGORY,
         CREATE_PRODUCT,
         FILTERS_CLEAR,
-        GET_PRODUCT_ID,
         LOGIN,
         LOGOUT
     } from '../actions/actionsTypes'
@@ -18,8 +17,7 @@ const initialState = {
     allProducts: [], 
     productDetail: [],
     filters: [],
-    categories: [],
-    
+    categories: [], 
     loginInfo:{
         isConnected: false,
         user: {
@@ -70,20 +68,20 @@ export function productsReducer(state = initialState, action){
         case FILTER_PRODUCTS_BY_CATEGORY:
             const filteredCategory = action.payload === 'All'
             ? state.allProducts
-            : state.allProducts.filter((p) => p.categories && p.categories.filter((c)=>
+            : state.allProducts.filter((p) => p.category && p.category.filter((c)=>
             c.name === action.payload).length)
             return {
                 ...state,
                 filters: filteredCategory
             };
 
-        case FILTER_PRODUCTS_BY_PRICE:  //ver como viene de ruta
-            const filteredPrice = !action.payload ? state.allProducts
-            : state.allProducts.filter((p) => p.price >= action.payload.min && p.price <= action.payload.max)
-            return {
-                ...state,
-                filters: filteredPrice
-            }
+        // case FILTER_PRODUCTS_BY_PRICE:    //ver como viene de ruta
+        //     const filteredPrice = !action.payload ? state.allProducts
+        //     : state.allProducts.filter((p) => p.price >= action.payload.min && p.price <= action.payload.max)
+        //     return {
+        //         ...state,
+        //         filters: filteredPrice
+        //     }
 
         case FILTER_PRODUCTS_BY_BRANDS: 
             const filteredBrands= action.payload === 'All'

@@ -8,7 +8,7 @@ import { logOut } from '../actions';
 import Swal from 'sweetalert2';
 import SearchBar from './SearchBar'
 import logo from '../assets/img/logo-ecommerce.png'
-
+import Filters from './Filters';
 const Nav = () => {
     const session = useSelector(state => state.productsReducer.loginInfo);
     const dispatch = useDispatch();
@@ -30,6 +30,7 @@ const Nav = () => {
     return (
         <header className={s.container}>
             <nav className={s.options}>
+            <Filters />
                
                 <img className={s.logo} src={logo} onClick={()=>{window.location='/'}} alt="logo ecommerce"/> 
                 <SearchBar />

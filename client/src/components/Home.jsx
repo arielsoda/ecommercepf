@@ -6,6 +6,7 @@ import { getAllProducts, getProductByName } from '../actions/index.js'
 import { useParams } from "react-router-dom";
 
 
+
 const Home = () => {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.productsReducer.allProducts)
