@@ -23,7 +23,7 @@ const SERVER = 'http://localhost:3001';
                 const products = await axios.get(`${SERVER}/products?offset=""&limit=""`);
                 return dispatch({
                     type: GET_ALL_PRODUCTS,
-                    payload: products.data.productsInfo
+                    payload: products.data
                 });
             }catch(err){
                 console.log(err)

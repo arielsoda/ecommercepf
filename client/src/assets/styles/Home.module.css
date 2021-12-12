@@ -1,6 +1,8 @@
 .container{
    display: flex;
    flex-direction: column;
+   padding-top: 100px;
+   background-color: rgb(230, 220, 189);
 }
 
 .search{
@@ -20,5 +22,5 @@
    justify-content: space-evenly;
    flex-shrink: 1;
    flex-wrap: wrap;
-   padding: 150px 40px 30px 40px;
+   /* padding: 150px 40px 30px 40px; */
 }

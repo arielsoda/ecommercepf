@@ -1,0 +1,8 @@
+.container{
+   width: 100%;
+   height: 80px;
+   background-color: rgb(221, 210, 172);
+   /* margin-top: 100px; */
+   margin-bottom: 30px;
+   border-bottom: solid 2px gray;
+}
