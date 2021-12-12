@@ -139,7 +139,7 @@ export function productsReducer(state = initialState, action){
         case FILTERS_CLEAR:
             return {
                 ...state,
-                filters: allProducts
+                filters: state.allProducts
             } 
 
         default:
