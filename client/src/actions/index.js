@@ -29,7 +29,7 @@ export function login(payload){
             var {user} = payload;
             console.log(`http://localhost/login?name=${user.givenName}&email=${user.email}`);
 
-            res = await axios(`http://localhost/login?name=${payload.user.name}&email=${payload.user.email}`);
+            //res = await axios(`http://localhost/login?name=${payload.user.name}&email=${payload.user.email}`);
         }
         
         res = {
