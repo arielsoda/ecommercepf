@@ -8,7 +8,7 @@ import { logOut } from '../actions';
 import Swal from 'sweetalert2';
 import SearchBar from './SearchBar'
 import logo from '../assets/img/logo-ecommerce.png'
-import Filters from './Filters';
+
 const Nav = () => {
     const session = useSelector(state => state.productsReducer.loginInfo);
     const dispatch = useDispatch();

@@ -12,12 +12,12 @@ import {
 
 function Filters() {
      const dispatch = useDispatch();
-     const filters = useSelector(state => state.productsReducer.filters);
+     const allProducts = useSelector(state => state.productsReducer.allProducts);
      const [,setSort] = useState('');
 
      useEffect(() => {
-         dispatch(getAllProducts)
-         dispatch(getCategories) 
+         dispatch(getAllProducts({offset:0, limit:25, maxPrice: null, minPrice:null, brand: null}))
+         dispatch(getCategories()) 
      }, [dispatch])
 
      function handleClick(e){
@@ -54,7 +54,7 @@ function Filters() {
                         <option value="television">Television</option>
                 </select>
       
-            <select key={filters.idProduct}
+            <select 
             name='brand'
             onChange={handleFilterByBrand}>
                 <option value='All'>Select Brand</option>
@@ -102,11 +102,11 @@ function Filters() {
                 <opcion value='gadnic'>Gadnic</opcion>
                 <opcion value='dt no.1'>Dt no.1</opcion>
             </select>
-            {/* <select key={filters.idProduct}
+            {/* <select 
                 name='brand'
                 onChange={handleFilterByBrand}>
                     <option value=''>Select Brand</option>
-                   {/*  {filters?filters.map((p) => {
+                   {/*  {allProducts?allProducts.map((p) => {
                         return(
                         <option key={p.idProduct} value={p.idProduct}>{p.brand}</option>
                     )}) :('Brand is not Found')} 

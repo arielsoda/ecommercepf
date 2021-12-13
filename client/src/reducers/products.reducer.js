@@ -3,7 +3,7 @@ import{ GET_ALL_PRODUCTS,
         GET_PRODUCT_ID,
         GET_ALL_CATEGORIES,
         FILTER_PRODUCTS_BY_CATEGORY,
-        FILTER_PRODUCTS_BY_PRICE,
+        //FILTER_PRODUCTS_BY_PRICE,
         FILTER_PRODUCTS_BY_BRANDS,
         SORT_PRODUCTS,
         CREATE_CATEGORY,
@@ -16,7 +16,6 @@ import{ GET_ALL_PRODUCTS,
 const initialState = {
     allProducts: [], 
     productDetail: [],
-    filters: [],
     categories: [], 
     loginInfo:{
         isConnected: false,
@@ -33,7 +32,6 @@ export function productsReducer(state = initialState, action){
             return {
                 ...state,
                 allProducts: action.payload,
-                filters: action.payload
             };
 
         case GET_PRODUCT_BY_NAME:
@@ -72,7 +70,7 @@ export function productsReducer(state = initialState, action){
             c.name === action.payload).length)
             return {
                 ...state,
-                filters: filteredCategory
+                allProducts: filteredCategory
             };
 
         // case FILTER_PRODUCTS_BY_PRICE:    //ver como viene de ruta
@@ -80,7 +78,7 @@ export function productsReducer(state = initialState, action){
         //     : state.allProducts.filter((p) => p.price >= action.payload.min && p.price <= action.payload.max)
         //     return {
         //         ...state,
-        //         filters: filteredPrice
+        //         allProducts: filteredPrice
         //     }
 
         case FILTER_PRODUCTS_BY_BRANDS: 
@@ -89,39 +87,39 @@ export function productsReducer(state = initialState, action){
             : state.allProducts.filter((p) => p.brands === action.payload)
             return {
                 ...state,
-                filters: filteredBrands
+                allProducts: filteredBrands
             };
 
         case SORT_PRODUCTS:
             let sorts;
-            if(action.payload === 'All') sorts= state.productReducer.allProducts
+            if(action.payload === 'All') sorts= state.allProducts
             if(action.payload === 'A-Z'){  //alpha
-                sorts = state.filters.sort((a,b) => {
+                sorts = state.allProducts.sort((a,b) => {
                     if(a.name > b.name) return 1;
                     if(a.name < b.name) return -1;
                     return 0;
                 })
             }
             if(action.payload === 'Z-A'){
-                sorts = state.filters.sort((a,b) => {
+                sorts = state.allProducts.sort((a,b) => {
                     if(a.name < b.name) return 1;
                     if(a.name > b.name) return -1;
                     return 0;
                 })
             }
             if(action.payload === 'Lower_price'){  //num
-                sorts = state.filters.sort((a,b) => {
+                sorts = state.allProducts.sort((a,b) => {
                     return   a.price - b.price;
                 })      
             }
             if(action.payload === 'Highest_price'){
-                sorts = state.filters.sort((a,b) => {
+                sorts = state.allProducts.sort((a,b) => {
                     return  b.price - a.price;
                 })      
             }
         return {
             ...state,
-            filters: sorts
+            allProducts: sorts
         };
 
         case LOGIN:
@@ -139,7 +137,7 @@ export function productsReducer(state = initialState, action){
         case FILTERS_CLEAR:
             return {
                 ...state,
-                filters: state.allProducts
+                allProducts: state.allProducts
             } 
 
         default:
