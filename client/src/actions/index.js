@@ -18,10 +18,13 @@ const SERVER = 'http://localhost:3001';
 
 
     export function getAllProducts(data) {
-        const {offset=0, limit=25, maxPrice= null, minPrice= null, brand = null} = data
+        let {offset=0, limit=25, minPrice= null,  maxPrice= null,brand = null} = data
+        minPrice= minPrice?`&minPrice=${minPrice}`: '';
+        maxPrice=maxPrice?`&maxPrice${maxPrice}`:'';
+        brand=brand? `&brand${brand}`:'';
         return async function(dispatch){
             try{
-                const products = await axios.get(`${SERVER}/products?offset=${offset}&limit=${limit}&maxPrice=${maxPrice}&minPrice=${minPrice}&brand=${brand}`);
+                const products = await axios.get(`${SERVER}/products?offset=${offset}&limit=${limit}${maxPrice}${minPrice}${brand}`);
                 return dispatch({
                     type: GET_ALL_PRODUCTS,
                     payload: products.data
