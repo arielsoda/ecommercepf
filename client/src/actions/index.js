@@ -17,10 +17,16 @@ import axios from 'axios';
 const SERVER = 'http://localhost:3001';
 
 
-    export function getAllProducts(offset=0, limit=25) {
+    export function getAllProducts(data) {
+        let {offset=0, limit=25, minPrice= null,  maxPrice= null,brand = null, category=null} = data
+        minPrice= minPrice?`&minPrice=${minPrice}`: '';
+        maxPrice=maxPrice?`&maxPrice=${maxPrice}`:'';
+        brand=brand? `&brand=${brand}`:'';
+        category=category? `&category=${category}`:'';
         return async function(dispatch){
             try{
-                const products = await axios.get(`${SERVER}/products?offset=${offset}&limit=${limit}`);
+                console.log(`${SERVER}/products?offset=${offset}&limit=${limit}${maxPrice}${minPrice}${brand}${category}`)
+                const products = await axios.get(`${SERVER}/products?offset=${offset}&limit=${limit}${maxPrice}${minPrice}${brand}${category}`);
                 return dispatch({
                     type: GET_ALL_PRODUCTS,
                     payload: products.data
@@ -50,7 +56,7 @@ const SERVER = 'http://localhost:3001';
     export function getCategories(){
         return async function(dispatch){
             try{
-                const categories= await axios.get('http://localhost:3001/categories')
+                const categories= await axios.get('http://localhost:3001/categories?all=true')
                 return dispatch({
                     type: GET_ALL_CATEGORIES,
                     payload: categories.data
