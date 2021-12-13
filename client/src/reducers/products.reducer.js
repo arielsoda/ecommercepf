@@ -94,32 +94,35 @@ export function productsReducer(state = initialState, action){
             let sorts;
             if(action.payload === 'All') sorts= state.allProducts
             if(action.payload === 'A-Z'){  //alpha
-                sorts = state.allProducts.sort((a,b) => {
-                    if(a.name > b.name) return 1;
-                    if(a.name < b.name) return -1;
+                console.log('reducer',state)
+                sorts = state.allProducts.productsInfo.sort((a,b) => {
+                    if(a.name.trim() > b.name.trim()) return 1;
+                    if(a.name.trim() < b.name.trim()) return -1;
                     return 0;
                 })
             }
             if(action.payload === 'Z-A'){
-                sorts = state.allProducts.sort((a,b) => {
-                    if(a.name < b.name) return 1;
-                    if(a.name > b.name) return -1;
+                sorts = state.allProducts.productsInfo.sort((a,b) => {
+                    if(a.name.trim() < b.name.trim()) return 1;
+                    if(a.name.trim() > b.name.trim()) return -1;
                     return 0;
                 })
             }
-            if(action.payload === 'Lower_price'){  //num
-                sorts = state.allProducts.sort((a,b) => {
+             if(action.payload === 'Lower_price'){  //num
+                sorts = state.allProducts.productsInfo.sort((a,b) => {
                     return   a.price - b.price;
                 })      
             }
             if(action.payload === 'Highest_price'){
-                sorts = state.allProducts.sort((a,b) => {
+                sorts = state.allProducts.productsInfo.sort((a,b) => {
                     return  b.price - a.price;
                 })      
             }
         return {
             ...state,
-            allProducts: sorts
+            allProducts: {...state.allProducts,productsInfo: sorts}
+            
+
         };
 
         case LOGIN:
