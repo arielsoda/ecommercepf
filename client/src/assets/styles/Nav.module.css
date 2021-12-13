@@ -35,4 +35,17 @@
     width: 150px;
     height: 40px;
     border-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(230, 230, 230);
+    transition: background-color .3s;
+}
+
+.btn:hover{
+    background-color: rgb(197, 197, 197);
+    transition: background-color .3s;
+}
+
+.btn:active{
+    background-color: rgb(146, 146, 146);
+    transition: background-color .3s;
 }

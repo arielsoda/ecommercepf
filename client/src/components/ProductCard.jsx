@@ -1,6 +1,7 @@
 import React from 'react'
 import s from '../assets/styles/ProductCard.module.css'
 import { Link } from "react-router-dom"
+import {formatMoney} from 'accounting'
 function ProductCard({ id , name , price , image}) {
    return (
       <div className={s.card}> 
