@@ -6,35 +6,49 @@ import s from '../assets/styles/CatForm.module.css';
 
 
 export default function CatForm (){
-const dispatch = useDispatch();
-const categories = useSelector(state=>state.categories);
-const [category, setCategory]=useState({
-    name:'',
-});
-// const [error,setError]=useState({
-//     name:''
-// });
-
-useEffect(()=>{
-    dispatch(getCategories())
-},[dispatch])
-
-function handleSubmit(e){
-    dispatch(createCategory(category))
-    setCategory({
-        name:'',
+    const dispatch = useDispatch();
+    const categories = useSelector(state=> state=["smartPhone", "smartWatch","television"]);
+    console.log(categories)
+    const [category, setCategory] = useState({
+        name: '',
     })
-    alert('Category added succesfully')
-}
-function handleChange(e){
-    // let name = e.target.name;
-    // let value = e.target.value;
-    // if(name.split('')[0]=== name.split('')[0].toUpperCase()){}
-    setCategory({
-        ...category,
-        [e.target.name]:e.target.value
+    const [error, setError] = useState({
+        name: '',
     })
-}
+
+    useEffect(()=>{
+        dispatch(getCategories())
+        console.log(getCategories())
+    },[dispatch])
+
+    function handleSubmit(e){
+        dispatch(...categories,category)
+        setCategory({
+            name: '',
+        })
+        alert('Activity Created Succesfuly')
+    }
+    function handleChange(e){
+        let name= e.target.name;
+        let value= e.target.value;
+        if(value==""){
+            setError({...error,[name]:'No se admite campo vacio'})
+        }else if((name==="name" || name==="season")&& /\d/.test(value)){
+            setError({...error,[name]:'Solo se admiten letras'})
+        }else if(name!=="season" && name!=="name" && isNaN(value))
+            setError({...error,[name]:'Solo se admiten numeros'})
+        setCategory({
+            ...category,
+            [e.target.name] : e.target.value,
+        })
+    }
+
+    function handleSelect(e){
+        setCategory({
+            ...category,
+            name: e.target.value
+        })
+    }
 
 // function handleSelect(e){
 //     setCategory({
@@ -42,7 +56,8 @@ function handleChange(e){
 
 //     })
 // }
-
+return(
+<>
 <div className={s.Background}>
     {/* <!-- AÑADIR COMPONENTE NAVBAR -->
     <!-- AÑADIR BOTON DESPLEGABLE PERFIL --> */}
@@ -55,7 +70,7 @@ function handleChange(e){
         <div className={s.InputSelect}>
             <div className={s.Input}>
                 <input 
-                    onChange={handleChange}
+                    onChange={handleSelect}
                     value={category.name}
                     name='name'
                     type="text"
@@ -73,13 +88,13 @@ function handleChange(e){
                 <select 
                         name="Abiable" 
                         placeholder="Abiable Categories" 
-                        id="">
+                        >
                     <option>Abiable Categories</option>
                     {categories.map((a)=>(
                         <option
                         key={a.idCategory}
                         value={a.idCategory}>
-                            {a.name}
+                            {a}
                         </option>
                     ))}
                 </select> 
@@ -92,5 +107,5 @@ function handleChange(e){
         
     </form>
 </div>
-
-}
+</>
+)}
