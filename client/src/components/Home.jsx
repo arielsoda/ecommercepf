@@ -11,18 +11,33 @@ import imgnotfound from "../assets/img/notfound.gif";
 
 const Home = () => {
     const dispatch = useDispatch();
+    const {search=null} = useParams();
     let [limit,setLimit] = useState(15)
     const products = useSelector((state) => {
             if(Array.isArray(state.productsReducer.allProducts)) return state.productsReducer.allProducts;
-        return state.productsReducer.allProducts.productsInfo}) 
-    const {search=null} = useParams();
+            return state.productsReducer.allProducts.productsInfo
+    }) 
+    const total = useSelector((state) => {
+        return state.productsReducer.allProducts.total
+    }) 
     const [page, setPage] = useState(1);
+    /* const indice = page*limit;
+    const indice2 = indice-limit; */
+    const nButtons= Math.ceil(total/limit)
+    console.log(nButtons)
 
     const handleChange = (event, value) => {
         event.preventDefault();
         alert(value)
         setPage(value);
     };
+
+    const handleChangeLimit = (event)=>{
+        event.preventDefault();
+        let value=event.target.value;
+        alert(value)
+        setLimit(value)
+    }
 
     useEffect(()=>{
         console.log(search)
@@ -35,7 +50,7 @@ const Home = () => {
 
     return (
         <div className={s.container}>
-            <Filters/>
+            <Filters handleChangeLimit={handleChangeLimit} />
             <Pagination  handleChange={handleChange}/>
 
             {search?<div className={s.search}><p>Resultados de busqueda de: <strong>{search}</strong></p></div>:null}

@@ -10,7 +10,7 @@ import {
 } from '../actions/index'
 
 
-function Filters() {
+function Filters({handleChangeLimit}) {
      const dispatch = useDispatch();
      const allProducts = useSelector(state => state.productsReducer.allProducts);
      const [,setSort] = useState('');
@@ -45,6 +45,15 @@ function Filters() {
      return (
         
         <div className={s.container}>
+            <select 
+            name='limit'
+            onChange={handleChangeLimit}>
+                        <option value='15'>15 Products</option>
+                        <option value="25">25 Products</option>
+                        <option value="35">35 Products</option>
+                        <option value="50">50 Products</option>
+                </select>
+
             <select 
             name='category'
             onChange={handleFilterByCategory}>
