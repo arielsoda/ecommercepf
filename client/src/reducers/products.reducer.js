@@ -2,12 +2,14 @@ import{ GET_ALL_PRODUCTS,
         GET_PRODUCT_BY_NAME,
         GET_PRODUCT_ID,
         GET_ALL_CATEGORIES,
+        GET_ALL_BRANDS,
         FILTER_PRODUCTS_BY_CATEGORY,
         //FILTER_PRODUCTS_BY_PRICE,
         FILTER_PRODUCTS_BY_BRANDS,
         SORT_PRODUCTS,
         CREATE_CATEGORY,
         CREATE_PRODUCT,
+        CREATE_BRANDS,
         FILTERS_CLEAR,
         LOGIN,
         LOGOUT
@@ -17,6 +19,7 @@ const initialState = {
     allProducts: [], 
     productDetail: [],
     categories: [], 
+    brands: [],
     loginInfo:{
         isConnected: false,
         user: {
@@ -52,6 +55,17 @@ export function productsReducer(state = initialState, action){
                 ...state,
                 categories: action.payload
             };
+
+        case  GET_ALL_BRANDS: 
+        return {
+            ...state,
+            brands: action.payload
+        };
+
+        case  CREATE_BRANDS: 
+        return {
+            ...state,
+        };
 
         case CREATE_CATEGORY:
             return {
@@ -120,7 +134,7 @@ export function productsReducer(state = initialState, action){
             }
         return {
             ...state,
-            allProducts: {...state.allProducts,productsInfo: sorts}
+            allProducts: {...state.allProducts, productsInfo: sorts}
             
 
         };
