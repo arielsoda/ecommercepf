@@ -2,6 +2,7 @@ import { GET_ALL_PRODUCTS,
     GET_PRODUCT_BY_NAME,
     GET_PRODUCT_ID,
     GET_ALL_CATEGORIES,
+    GET_ALL_BRANDS,
     FILTER_PRODUCTS_BY_CATEGORY,
     FILTER_PRODUCTS_BY_PRICE,
     FILTER_PRODUCTS_BY_BRANDS,
@@ -42,7 +43,7 @@ const SERVER = 'http://localhost:3001';
     export function getProductId(idProduct) {
         return async function(dispatch){
             try{
-                const detail= await axios.get(`http://localhost:3001/products/${idProduct}`)
+                const detail= await axios.get(`${SERVER}/products/${idProduct}`)
                 return dispatch({
                     type: GET_PRODUCT_ID,
                     payload: detail.data
@@ -56,10 +57,24 @@ const SERVER = 'http://localhost:3001';
     export function getCategories(){
         return async function(dispatch){
             try{
-                const categories= await axios.get('http://localhost:3001/categories?all=true')
+                const categories= await axios.get(`${SERVER}/categories`)
                 return dispatch({
                     type: GET_ALL_CATEGORIES,
                     payload: categories.data
+                })
+            }catch(err){
+                console.log(err)
+            }
+        }
+    };
+
+    export function getBrands(){
+        return async function(dispatch){
+            try{
+                const brands= await axios.get(`${SERVER}/categories?all=true`)
+                return dispatch({
+                    type: GET_ALL_BRANDS,
+                    payload: brands.data
                 })
             }catch(err){
                 console.log(err)
