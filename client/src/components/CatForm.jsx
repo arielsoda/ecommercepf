@@ -8,9 +8,11 @@ import s from '../assets/styles/CatForm.module.css';
 export default function CatForm (){
     const dispatch = useDispatch();
     const categories = useSelector(state=> state.productsReducer.categories);
-    console.log(categories)
     const [category, setCategory] = useState({
         name: '',
+    })
+    const [error, setError] = useState({
+        name: 'Introduzca un nombre para continuar',
     })
     
     useEffect(()=>{
@@ -25,9 +27,21 @@ export default function CatForm (){
         // alert('Category Created Succesfuly')
     }
     function handleChange(e){
-        setCategory({
-            ...categories,
-            name: e.target.value,
+        let errorinput='';
+        if(e.target.name==='name'&& e.target.value &&!/[a-zA-Z0-9]/.test(e.target.value)){
+            errorinput='Solo se admiten caracteres alfanúmericos'
+        }else{
+            setCategory({
+                ...categories,
+                name: e.target.value,
+            })
+        }
+        if(!e.target.value){
+            errorinput='Introduzca un nombre para continuar';
+        }
+        setError({
+            ...error,
+            name:errorinput
         })
     }
 
@@ -50,6 +64,7 @@ return(
                     type="text"
                     placeholder="Add a New Category"
                 />
+                {error.name?<span>{error.name}</span>:null}
                 <button 
                     type="submit"
                     onClick={handleSubmit}>

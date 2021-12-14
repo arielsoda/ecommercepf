@@ -15,6 +15,7 @@ import { GET_ALL_PRODUCTS,
     LOGOUT
 } from "./actionsTypes";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const SERVER = 'http://localhost:3001';
 
