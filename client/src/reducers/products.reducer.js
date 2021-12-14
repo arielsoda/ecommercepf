@@ -9,6 +9,7 @@ import{ GET_ALL_PRODUCTS,
         SORT_PRODUCTS,
         CREATE_CATEGORY,
         CREATE_PRODUCT,
+        CREATE_BRANDS,
         FILTERS_CLEAR,
         LOGIN,
         LOGOUT
@@ -18,6 +19,7 @@ const initialState = {
     allProducts: [], 
     productDetail: [],
     categories: [], 
+    brands: [],
     loginInfo:{
         isConnected: false,
         user: {
@@ -57,7 +59,12 @@ export function productsReducer(state = initialState, action){
         case  GET_ALL_BRANDS: 
         return {
             ...state,
-            categories: action.payload
+            brands: action.payload
+        };
+
+        case  CREATE_BRANDS: 
+        return {
+            ...state,
         };
 
         case CREATE_CATEGORY:

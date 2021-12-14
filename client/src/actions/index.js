@@ -9,6 +9,7 @@ import { GET_ALL_PRODUCTS,
     SORT_PRODUCTS,
     CREATE_CATEGORY,
     CREATE_PRODUCT,
+    CREATE_BRANDS,
     FILTERS_CLEAR,
     LOGIN,
     LOGOUT
@@ -71,7 +72,7 @@ const SERVER = 'http://localhost:3001';
     export function getBrands(){
         return async function(dispatch){
             try{
-                const brands= await axios.get(`${SERVER}/categories?all=true`)
+                const brands= await axios.get(`${SERVER}/brands`)
                 return dispatch({
                     type: GET_ALL_BRANDS,
                     payload: brands.data
@@ -84,7 +85,7 @@ const SERVER = 'http://localhost:3001';
 
     export function createCategory(payload){
         return async function (dispatch){
-            const newCategory = await axios.post( '',payload)
+            const newCategory = await axios.post(`${SERVER}/categories`, payload)
             return dispatch ({
                 type: CREATE_CATEGORY,
                 payload: newCategory
@@ -94,10 +95,20 @@ const SERVER = 'http://localhost:3001';
 
     export function createProduct(payload){
         return async function (dispatch){
-            const newProduct = await axios.post('' ,payload)
+            const newProduct = await axios.post(`${SERVER}/products` ,payload)
             return dispatch ({
                 type: CREATE_PRODUCT,
                 payload: newProduct
+            })
+        }
+    };
+
+    export function createBrands(payload){
+        return async function (dispatch){
+            const newBrands = await axios.post(`${SERVER}/brands` ,payload)
+            return dispatch ({
+                type: CREATE_BRANDS,
+                payload: newBrands
             })
         }
     };
