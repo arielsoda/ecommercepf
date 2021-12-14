@@ -1,4 +1,4 @@
-import { getProductsCategories, createCategory } from "../actions/index";
+import { getCategories, createCategory } from "../actions/index";
 import React,{useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -14,7 +14,7 @@ export default function CatForm (){
     })
     
     useEffect(()=>{
-        dispatch(getProductsCategories())
+        dispatch(getCategories())
     },[dispatch])
 
     function handleSubmit(e){

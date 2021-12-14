@@ -69,7 +69,7 @@ const SERVER = 'http://localhost:3001';
 
     export function createCategory(payload){
         return async function (dispatch){
-            const newCategory = await axios.post( '',payload)
+            const newCategory = await axios.post(`${SERVER}/categories`,payload)
             return dispatch ({
                 type: CREATE_CATEGORY,
                 payload: newCategory
@@ -79,7 +79,7 @@ const SERVER = 'http://localhost:3001';
 
     export function createProduct(payload){
         return async function (dispatch){
-            const newProduct = await axios.post('' ,payload)
+            const newProduct = await axios.post(`${SERVER}/products`,payload)
             return dispatch ({
                 type: CREATE_PRODUCT,
                 payload: newProduct
