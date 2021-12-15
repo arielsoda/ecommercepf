@@ -3,7 +3,7 @@ import React,{useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import s from '../assets/styles/CatForm.module.css';
-
+import Swal from 'sweetalert2';
 
 export default function CatForm (){
     const dispatch = useDispatch();
@@ -20,15 +20,21 @@ export default function CatForm (){
     },[dispatch])
 
     function handleSubmit(e){
+        e.preventDefault();
         dispatch(createCategory(category))
+        Swal.fire({
+            title: 'Categoria agregada',
+            text: `La categoria ${category.name} ha sido registrada correctamente.`,
+            icon: 'success'
+        })
         setCategory({
             name: '',
         })
-        // alert('Category Created Succesfuly')
+        
     }
     function handleChange(e){
         let errorinput='';
-        if(e.target.name==='name'&& e.target.value &&!/[a-zA-Z0-9]/.test(e.target.value)){
+        if(e.target.name==='name' && e.target.value &&!/[a-zA-Z0-9]/.test(e.target.value)){
             errorinput='Solo se admiten caracteres alfanúmericos'
         }else{
             setCategory({
