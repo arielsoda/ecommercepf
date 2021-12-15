@@ -13,7 +13,10 @@ import{ GET_ALL_PRODUCTS,
         FILTERS_CLEAR,
         LOGIN,
         LOGOUT,
-        REMOVE_CATEGORY
+        REMOVE_CATEGORY,
+        REMOVE_BRANDS,
+        EDIT_CATEGORY,
+        EDIT_BRANDS
     } from '../actions/actionsTypes'
 
 const initialState = {
@@ -133,12 +136,10 @@ export function productsReducer(state = initialState, action){
                     return  b.price - a.price;
                 })      
             }
-        return {
-            ...state,
-            allProducts: {...state.allProducts, productsInfo: sorts}
-            
-
-        };
+            return {
+                ...state,
+                allProducts: {...state.allProducts, productsInfo: sorts}         
+            };
 
         case LOGIN:
             return{
@@ -161,8 +162,21 @@ export function productsReducer(state = initialState, action){
         case  REMOVE_CATEGORY: 
             return {
                 ...state,
-                categories: state.categories.filter(p => p.category !== action.payload)
-            };    
+                categories: state.categories.filter(p => p.category.id !== action.payload)
+            };  
+            
+        case REMOVE_BRANDS:
+            return {
+                ...state,
+                categories: state.categories.filter(p => p.brand !== action.payload)
+            } 
+            
+        case EDIT_CATEGORY:
+            return {
+                ...state,
+                categories: [...state.categories.map((category) => category.id === action.payload.id?
+                    action.payload : category)]
+            }    
 
         default:
             return state;

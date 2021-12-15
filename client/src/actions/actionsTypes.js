@@ -13,7 +13,8 @@ export const CREATE_BRANDS = 'CREATE_BRANDS';
 export const FILTERS_CLEAR = 'FILTERS_CLEAR ';
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
-export const REMOVE_CATEGORY ='DELETE_CATEGORY';
+export const REMOVE_CATEGORY ='REMOVE_CATEGORY';
+export const REMOVE_BRANDS ='REMOVE_BRANDS';
 export const EDIT_CATEGORY = 'EDIT_CATEGORY';
 export const EDIT_BRANDS = 'EDIT_BRANDS';
 
