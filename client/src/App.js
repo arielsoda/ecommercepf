@@ -6,7 +6,7 @@ import Login from './components/Login';
 import Details from './components/Details'
 import Nav from './components/Nav'
 import Register from './components/Register'
-import CatForm from './components/CatForm'
+import CatForm from './components/Admin/CategoryForm'
 import BrandForm from './components/BrandForm'
 
 function App() {
