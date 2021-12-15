@@ -1,4 +1,4 @@
-import { getCategories, createCategory } from "../../actions/index";
+import { getCategories, createCategory, removeCategory } from "../../actions/index";
 import React,{useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -35,14 +35,38 @@ export default function CatForm (){
         },
     ]
     
+    const editCat = ()=>{
+        Swal.fire({
+            title: 'Ingrese el nuevo nombre de categoria',
+            input: 'text',
+            inputAttributes: {
+              autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Look up',
+            showLoaderOnConfirm: true,
+            preConfirm: (name) => {
+              /* dispatch(editCategory(id,name)) */
+              console.log(name)
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: `Se ha actualizado correctamente la Categoria`,
+                icon: 'success'
+              })
+            }
+          })
+    }
     let tcategorys=categories.map((a,i)=>{
         return {
-            key:i,
+            key: i,
             id: i,
             namecat: a,
             buttons: [
-                <attr title="Editar categoria"><button className={s.btnEdit} ><FontAwesomeIcon icon={faEdit}/></button></attr>,
-                <attr title="Eliminar categoria"><button className={s.btnDel}><FontAwesomeIcon icon={faTrashAlt}/></button></attr>
+                <attr title="Editar categoria" key={0}><button className={s.btnEdit} onClick={()=>editCat()} ><FontAwesomeIcon icon={faEdit}/></button></attr>,
+                <attr title="Eliminar categoria" key={1}><button className={s.btnDel} onClick={()=>dispatch(/* removeCategory(i+1) */)}><FontAwesomeIcon icon={faTrashAlt}/></button></attr>
             ]}
     })
     
@@ -129,9 +153,9 @@ return(
         
     </form>
     <DataTable
-                    columns={columns}
-                    data={tcategorys}
-                />
+        columns={columns}
+        data={tcategorys}
+    />
 </div>
 </>
 )}
