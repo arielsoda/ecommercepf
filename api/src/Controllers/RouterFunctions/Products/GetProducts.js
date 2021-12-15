@@ -1,5 +1,5 @@
-const {Product,CategoryBrand, Brand, Category} = require('../../../db')
-const {Op} = require('sequelize')
+const {Product,CategoryBrand, Brand, Category} = require('../../../db');
+const {Op} = require('sequelize');
 const getProducts= async (req, res, next)=>{
   try{
     const {offset=0, limit=50, search, minPrice=0, maxPrice, category, brand,condition} = req.query;
@@ -48,6 +48,7 @@ const getProducts= async (req, res, next)=>{
     let {count, rows} = await Product.findAndCountAll({
       where:{
         [Op.and]:[
+          {stock:{ [Op.gte]:1}},
           ...options.product
         ]
       },
@@ -66,11 +67,15 @@ const getProducts= async (req, res, next)=>{
       limit,
       offset
     })
-    let productsInfo = rows.map(el=>{
-      let {idRelation, relation, ...otherData}= el.toJSON()
-      return {...otherData}
-    })
-    res.status(200).json({productsInfo, total:count, limit, offset})
+    if(count){
+      let productsInfo = rows.map(el=>{
+        let {idRelation, relation, ...otherData}= el.toJSON()
+        return {...otherData}
+      })
+      return res.status(200).json({productsInfo, total:count, limit, offset})
+    }else{
+      return res.status(404).json({message: "Product not found"})
+    }
   }catch(err){
     console.log("getProducts: ", err);
     next(err);
