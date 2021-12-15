@@ -11,6 +11,7 @@ import { GET_ALL_PRODUCTS,
     CREATE_PRODUCT,
     CREATE_BRANDS,
     FILTERS_CLEAR,
+    REMOVE_CATEGORY,
     LOGIN,
     LOGOUT
 } from "./actionsTypes";
@@ -142,14 +143,14 @@ const SERVER = 'http://localhost:3001';
             type: FILTER_PRODUCTS_BY_PRICE,
             payload
         }
-    }
+    };
 
     export function filterProductByBrand(payload){
         return{
             type: FILTER_PRODUCTS_BY_BRANDS,
             payload
         }
-    }
+    };
 
     export function sortProducts(payload){
         return {
@@ -160,7 +161,7 @@ const SERVER = 'http://localhost:3001';
 
     export function filtersClear(){
         return {
-            type: FILTERS_CLEAR
+            type: FILTERS_CLEAR,
         }
     }
 
@@ -194,15 +195,23 @@ const SERVER = 'http://localhost:3001';
                 payload: res
             })
         }
-    }
+    };
 
     export function logOut(){
         return {
             type: LOGIN,
             payload: {isConnected: false}
+        } 
+    };
+
+    export function removeCategory(id){
+        return {
+            type: REMOVE_CATEGORY,
+            payload: id
         }
-        
-    }
+    };
+
+   
 
 
 

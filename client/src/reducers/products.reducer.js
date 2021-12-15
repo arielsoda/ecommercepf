@@ -12,7 +12,8 @@ import{ GET_ALL_PRODUCTS,
         CREATE_BRANDS,
         FILTERS_CLEAR,
         LOGIN,
-        LOGOUT
+        LOGOUT,
+        REMOVE_CATEGORY
     } from '../actions/actionsTypes'
 
 const initialState = {
@@ -156,6 +157,12 @@ export function productsReducer(state = initialState, action){
                 ...state,
                 allProducts: state.allProducts
             } 
+
+        case  REMOVE_CATEGORY: 
+            return {
+                ...state,
+                categories: state.categories.filter(p => p.category !== action.payload)
+            };    
 
         default:
             return state;
