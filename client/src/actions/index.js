@@ -11,8 +11,13 @@ import { GET_ALL_PRODUCTS,
     CREATE_PRODUCT,
     CREATE_BRANDS,
     FILTERS_CLEAR,
+    REMOVE_CATEGORY,
+    REMOVE_BRANDS,
+    EDIT_CATEGORY,
+
     LOGIN,
-    LOGOUT
+    LOGOUT,
+    EDIT_BRANDS
 } from "./actionsTypes";
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -142,14 +147,14 @@ const SERVER = 'http://localhost:3001';
             type: FILTER_PRODUCTS_BY_PRICE,
             payload
         }
-    }
+    };
 
     export function filterProductByBrand(payload){
         return{
             type: FILTER_PRODUCTS_BY_BRANDS,
             payload
         }
-    }
+    };
 
     export function sortProducts(payload){
         return {
@@ -160,7 +165,7 @@ const SERVER = 'http://localhost:3001';
 
     export function filtersClear(){
         return {
-            type: FILTERS_CLEAR
+            type: FILTERS_CLEAR,
         }
     }
 
@@ -194,15 +199,46 @@ const SERVER = 'http://localhost:3001';
                 payload: res
             })
         }
-    }
+    };
 
     export function logOut(){
         return {
             type: LOGIN,
             payload: {isConnected: false}
+        } 
+    };
+
+    export function removeCategory(id){
+        return {
+            type: REMOVE_CATEGORY,
+            payload: id
         }
-        
-    }
+    };
+
+    export function removeBrands(brand){
+        return {
+            type: REMOVE_BRANDS,
+            payload: brand
+        }
+    };
+
+    export function editCategory(id, name){
+        return {
+            type: EDIT_CATEGORY,
+            payload: {id, name}
+        }
+    };
+
+    export function editBrand(brand){
+        return {
+            type: EDIT_BRANDS,
+            payload: brand
+        }
+    };
+
+    
+
+   
 
 
 
