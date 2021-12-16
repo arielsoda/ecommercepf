@@ -226,7 +226,7 @@ const SERVER = 'http://localhost:3001';
     export function removeBrands(id){
         try{
             return async function (dispatch){
-                const remBrands = await axios.delete(`${SERVER}/brands/${id}` ,payload)
+                const remBrands = await axios.delete(`${SERVER}/brands/${id}`)
                 return dispatch ({
                     type: REMOVE_BRANDS,
                     payload: id
@@ -240,7 +240,7 @@ const SERVER = 'http://localhost:3001';
     export function removeProducts(id){
         try{
             return async function (dispatch){
-                const remBrands = await axios.delete(`${SERVER}/brands/${id}` ,payload)
+                const remBrands = await axios.delete(`${SERVER}/brands/${id}`)
                 return dispatch ({
                     type: REMOVE_BRANDS,
                     payload: id
@@ -254,7 +254,7 @@ const SERVER = 'http://localhost:3001';
     export function editCategory(id, name){
         try{
             return async function(dispatch){
-                const edCategories= await axios.put(`${SERVER}/categories/${id,name}`, payload)
+                const edCategories= await axios.put(`${SERVER}/categories/${id,name}`)
                 return dispatch({
                     type: EDIT_CATEGORY,
                     payload: {id, name}
@@ -268,7 +268,7 @@ const SERVER = 'http://localhost:3001';
     export function editBrand(id){
         try{
             return async function(dispatch){
-                const edBrands= await axios.put(`${SERVER}/brands/${id}`, payload)
+                const edBrands= await axios.put(`${SERVER}/brands/${id}`)
                 return dispatch({
                     type: EDIT_BRANDS,
                     payload: id
@@ -282,7 +282,7 @@ const SERVER = 'http://localhost:3001';
     export function removeProduct(idProduct) {
         return async function(dispatch){
             try{
-                const remProduct= await axios.delete(`${SERVER}/products/${idProduct}`,payload)
+                const remProduct= await axios.delete(`${SERVER}/products/${idProduct}`)
                 return dispatch({
                     type: REMOVE_PRODUCT,
                     payload: idProduct
