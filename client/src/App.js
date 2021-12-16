@@ -7,7 +7,7 @@ import Details from './components/Details'
 import Nav from './components/Nav'
 import Register from './components/Register'
 import CatForm from './components/Admin/CategoryForm'
-import BrandForm from './components/BrandForm'
+import BrandForm from './components/Admin/BrandForm'
 
 function App() {
   return (

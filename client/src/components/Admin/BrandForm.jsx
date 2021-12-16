@@ -2,7 +2,8 @@ import { getBrands, createBrands, deleteBrand } from "../../actions/index";
 import React,{useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import s from '../assets/styles/BrandForm.module.css';
+import s from '../../assets/styles/BrandForm.module.css';
+import Swal from 'sweetalert2';
 
 
 export default function BrandForm (){
@@ -20,15 +21,19 @@ export default function BrandForm (){
     },[dispatch])
 
     function handleSubmit(e){
+        e.preventDefault()
         if(!e.target.value){
-            e.preventDefault()
-            alert('Introduzca un nombre para continuar')
+            Swal.fire({
+                Title: 'Advertencia',
+                icon:'info',
+                text:'Introduzca un nombre para continuar'
+            })
         }else{
-        dispatch(createBrands(brand))
-        setBrand({
-            name: '',
-        })
-        alert('Brand Created Succesfuly')
+            dispatch(createBrands(brand))
+            setBrand({
+                name: '',
+            })
+            alert('Brand Created Succesfuly')
         }
     }
     function handleChange(e){
