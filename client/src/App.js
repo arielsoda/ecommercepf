@@ -6,7 +6,9 @@ import Login from './components/Login';
 import Details from './components/Details'
 import Nav from './components/Nav'
 import Register from './components/Register'
-import CatForm from './components/CatForm';
+import CatForm from './components/Admin/CategoryForm'
+import BrandForm from './components/BrandForm'
+
 function App() {
   return (
     <div className="App">
@@ -18,6 +20,7 @@ function App() {
         <Route exact path="/register" element={<Register/>} />
         <Route exact path="/search/:search" element={<Home/>} />
         <Route exact path="/addCategory" element={<CatForm/>} />
+        <Route exact path="/addBrand" element={<BrandForm/>} />
       </Routes>
     </div>
   );

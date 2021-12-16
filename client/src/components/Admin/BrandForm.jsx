@@ -1,14 +1,14 @@
-import { getCategories, createCategory } from "../actions/index";
+import { getBrands, createBrands, deleteBrand } from "../../actions/index";
 import React,{useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import s from '../assets/styles/CatForm.module.css';
+import s from '../assets/styles/BrandForm.module.css';
 
 
-export default function CatForm (){
+export default function BrandForm (){
     const dispatch = useDispatch();
-    const categories = useSelector(state=> state.productsReducer.categories);
-    const [category, setCategory] = useState({
+    const brands = useSelector(state=> state.productsReducer.brands);
+    const [brand, setBrand] = useState({
         name: '',
     })
     const [error, setError] = useState({
@@ -16,24 +16,29 @@ export default function CatForm (){
     })
     
     useEffect(()=>{
-        dispatch(getCategories())
+        dispatch(getBrands())
     },[dispatch])
 
     function handleSubmit(e){
-        dispatch(createCategory(category))
-        setCategory({
+        if(!e.target.value){
+            e.preventDefault()
+            alert('Introduzca un nombre para continuar')
+        }else{
+        dispatch(createBrands(brand))
+        setBrand({
             name: '',
         })
-        // alert('Category Created Succesfuly')
+        alert('Brand Created Succesfuly')
+        }
     }
     function handleChange(e){
         let errorinput='';
-        if(e.target.name==='name'&& e.target.value &&!/[a-zA-Z0-9]/.test(e.target.value)){
-            errorinput='Solo se admiten caracteres alfanúmericos'
+        if(e.target.name==='name'&& e.target.value &&!/[a-zA-Z]/.test(e.target.value)){
+            errorinput='Solo se admiten letras'
         }else{
-            setCategory({
-                ...categories,
-                name: e.target.value,
+            setBrand({
+                ...brands,
+                [e.target.name]: e.target.value,
             })
         }
         if(!e.target.value){
@@ -43,6 +48,12 @@ export default function CatForm (){
             ...error,
             name:errorinput
         })
+    }
+
+    function handleDelete(e){
+        // deleteBrand(e.target.value)
+        e.preventDefault()
+        alert(`Brand has been deleted`)
     }
 
 return(
@@ -59,40 +70,36 @@ return(
             <div className={s.Input}>
                 <input 
                     onChange={handleChange}
-                    value={category.name}
+                    value={brand.name}
                     name='name'
                     type="text"
                     placeholder="Add a New Category"
                 />
+
                 {error.name?<span>{error.name}</span>:null}
-                <button 
-                    type="submit"
-                    onClick={handleSubmit}>
-                        Add
+
+                <button type="submit"onClick={handleSubmit}>
+                    Add
                 </button>
 
             </div><br></br>
 
-            <div className={s.Select}>
-                <select 
-                        name="Abiable" 
-                        placeholder="Abiable Categories" 
-                        >
-                    <option>Abiable Categories</option>
-                    {categories.map((a)=>(
-                        <option
-                        key={a.idCategory}
-                        value={a.idCategory}>
-                            {a}
-                        </option>
-                    ))}
-                </select> 
-            </div><br></br>
         </div>
 
         <Link to='/'>
             <button>Home Page</button>
         </Link>
+
+
+        <div className={s.SelectLink}>
+            <ul value="Abiable">
+                    {brands.map((b)=>(
+                        <li key={b.idBrand}value={b.idBrand}>
+                            {b.name.toUpperCase()}<button name={b.name} className={s.Delete} onClick={handleDelete}><span>x</span></button>
+                        </li> 
+                    ))}
+            </ul> 
+        </div><br></br>
         
     </form>
 </div>
