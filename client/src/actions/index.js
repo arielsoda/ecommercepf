@@ -13,8 +13,9 @@ import { GET_ALL_PRODUCTS,
     FILTERS_CLEAR,
     REMOVE_CATEGORY,
     REMOVE_BRANDS,
+    REMOVE_PRODUCT,
     EDIT_CATEGORY,
-
+    EDIT_PRODUCT,
     LOGIN,
     LOGOUT,
     EDIT_BRANDS
@@ -209,30 +210,86 @@ const SERVER = 'http://localhost:3001';
     };
 
     export function removeCategory(id){
-        return {
-            type: REMOVE_CATEGORY,
-            payload: id
+        return async function(dispatch){
+            try{
+                const categories= await axios.delete(`${SERVER}/categories/${id}`)
+                return dispatch({
+                    type: REMOVE_CATEGORY,
+                    payload: id
+                })
+            }catch(err){
+                console.log(err)
+            }
         }
     };
 
-    export function removeBrands(brand){
-        return {
-            type: REMOVE_BRANDS,
-            payload: brand
+    export function removeBrands(id){
+        try{
+            return async function (dispatch){
+                const remBrands = await axios.delete(`${SERVER}/brands/${id}` ,payload)
+                return dispatch ({
+                    type: REMOVE_BRANDS,
+                    payload: id
+                })
+            }
+        }catch(err){
+            console.lor(err)
+        }
+    };
+
+    export function removeProducts(id){
+        try{
+            return async function (dispatch){
+                const remBrands = await axios.delete(`${SERVER}/brands/${id}` ,payload)
+                return dispatch ({
+                    type: REMOVE_BRANDS,
+                    payload: id
+                })
+            }
+        }catch(err){
+            console.lor(err)
         }
     };
 
     export function editCategory(id, name){
-        return {
-            type: EDIT_CATEGORY,
-            payload: {id, name}
+        try{
+            return async function(dispatch){
+                const edCategories= await axios.put(`${SERVER}/categories/${id,name}`, payload)
+                return dispatch({
+                    type: EDIT_CATEGORY,
+                    payload: {id, name}
+                })
+            }
+        }catch(err){
+            console.log(err)
         }
     };
 
-    export function editBrand(brand){
-        return {
-            type: EDIT_BRANDS,
-            payload: brand
+    export function editBrand(id){
+        try{
+            return async function(dispatch){
+                const edBrands= await axios.put(`${SERVER}/brands/${id}`, payload)
+                return dispatch({
+                    type: EDIT_BRANDS,
+                    payload: id
+                })
+            }
+        }catch(err){
+            console.log(err)
+        }
+    };
+
+    export function removeProduct(idProduct) {
+        return async function(dispatch){
+            try{
+                const remProduct= await axios.delete(`${SERVER}/products/${idProduct}`,payload)
+                return dispatch({
+                    type: REMOVE_PRODUCT,
+                    payload: idProduct
+                })     
+            }catch(err){
+                console.log(err)
+            }   
         }
     };
 
