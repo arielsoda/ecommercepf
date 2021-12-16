@@ -19,7 +19,7 @@ export default function CatForm (){
     })
     const columns = [
         {
-            name: 'ID',
+            name: 'No',
             selector: row => row.id,
             sortable: true,
         },
@@ -62,7 +62,7 @@ export default function CatForm (){
     let tcategorys=categories.map((a,i)=>{
         return {
             key: i,
-            id: i,
+            id: i+1,
             namecat: a,
             buttons: [
                 <attr title="Editar categoria" key={0}><button className={s.btnEdit} onClick={()=>editCat()} ><FontAwesomeIcon icon={faEdit}/></button></attr>,
