@@ -2,7 +2,18 @@ const {Product,CategoryBrand, Brand, Category} = require('../../../db');
 const {Op} = require('sequelize');
 const getProducts= async (req, res, next)=>{
   try{
-    const {offset=0, limit=50, search, minPrice=0, maxPrice, category, brand,condition} = req.query;
+    const {
+      offset=0, 
+      limit=50, 
+      search, 
+      minPrice=0, 
+      maxPrice, 
+      category, 
+      brand,
+      condition, 
+      stock=true
+    } = req.query;
+
     if(limit>50) next({message: "The requested limit is higher than the allowed. Maximum allowed is 50", status:400})
     
     const options = {product:[], through:[]}; 
@@ -43,12 +54,15 @@ const getProducts= async (req, res, next)=>{
     if(condition){
       options.product.push({condition})
     }
+    //[Filter by Stock
+    if(stock){
+      options.product.push({stock:{ [Op.gte]:1}})
+    }
 
   
     let {count, rows} = await Product.findAndCountAll({
       where:{
         [Op.and]:[
-          {stock:{ [Op.gte]:1}},
           ...options.product
         ]
       },
