@@ -168,7 +168,7 @@ export function productsReducer(state = initialState, action){
         case REMOVE_BRANDS:
             return {
                 ...state,
-                categories: state.categories.filter(p => p.brand !== action.payload)
+                brands: state.categories.filter(p => p.brand !== action.payload)
             } 
             
         case EDIT_CATEGORY:
@@ -176,7 +176,14 @@ export function productsReducer(state = initialState, action){
                 ...state,
                 categories: [...state.categories.map((category) => category.id === action.payload.id?
                     action.payload : category)]
-            }    
+            }
+        
+            case EDIT_BRANDS:
+                return {
+                    ...state,
+                    brands: [...state.brands.map((brand) => brand.id === action.payload.id?
+                        action.payload : brand)]
+                }        
 
         default:
             return state;
