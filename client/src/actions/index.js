@@ -252,9 +252,13 @@ const SERVER = 'http://localhost:3001';
     };
 
     export function editCategory(id, name){
+        
         try{
             return async function(dispatch){
-                const edCategories= await axios.put(`${SERVER}/categories/${id,name}`)
+                console.log('llamada recibida xD')
+                console.log(`${SERVER}/categories/${id}`)
+                axios.put(`${SERVER}/categories/${id}`,{name: name})
+                //console.log(edCategories)
                 return dispatch({
                     type: EDIT_CATEGORY,
                     payload: {id, name}

@@ -162,7 +162,7 @@ export function productsReducer(state = initialState, action){
         case  REMOVE_CATEGORY: 
             return {
                 ...state,
-                categories: state.categories.filter(p => p.category.id !== action.payload)
+                categories: state.categories.filter(p => p.idCategory !== action.payload)
             };  
             
         case REMOVE_BRANDS:

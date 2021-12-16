@@ -1,4 +1,4 @@
-import { getCategories, createCategory, removeCategory } from "../../actions/index";
+import { getCategories, createCategory, removeCategory, editCategory } from "../../actions/index";
 import React,{useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -14,6 +14,8 @@ export default function CatForm (){
     const [category, setCategory] = useState({
         name: '',
     })
+    const [edit, setEdit] = useState(false)
+    const [remove, setRemove] = useState(false)
     const [error, setError] = useState({
         name: 'Introduzca un nombre para continuar',
     })
@@ -35,7 +37,7 @@ export default function CatForm (){
         },
     ]
     
-    const editCat = ()=>{
+    const editCat = (id)=>{
         Swal.fire({
             title: 'Ingrese el nuevo nombre de categoria',
             input: 'text',
@@ -46,33 +48,46 @@ export default function CatForm (){
             confirmButtonText: 'Look up',
             showLoaderOnConfirm: true,
             preConfirm: (name) => {
-              /* dispatch(editCategory(id,name)) */
-              console.log(name)
+              return name;
             },
             allowOutsideClick: () => !Swal.isLoading()
           }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire({
-                title: `Se ha actualizado correctamente la Categoria`,
-                icon: 'success'
-              })
+                dispatch(editCategory(id,result.value))
+                setEdit(true)
+                Swal.fire({
+                    title: `Se ha actualizado correctamente la Categoria`,
+                    icon: 'success'
+                })
             }
           })
     }
+
+    let deleteCat = (id)=>{
+        dispatch(removeCategory(id))
+        setRemove(true)
+        Swal.fire({
+            title: `Se ha actualizado correctamente la Categoria`,
+            icon: 'success'
+        })
+    }
+
     let tcategorys=categories.map((a,i)=>{
         return {
             key: i,
-            id: i+1,
-            namecat: a,
+            id: a.idCategory,
+            namecat: a.name,
             buttons: [
-                <attr title="Editar categoria" key={0}><button className={s.btnEdit} onClick={()=>editCat()} ><FontAwesomeIcon icon={faEdit}/></button></attr>,
-                <attr title="Eliminar categoria" key={1}><button className={s.btnDel} onClick={()=>dispatch(/* removeCategory(i+1) */)}><FontAwesomeIcon icon={faTrashAlt}/></button></attr>
+                <abbr title="Editar categoria" key={0}><button className={s.btnEdit} onClick={()=>editCat(a.idCategory)} ><FontAwesomeIcon icon={faEdit}/></button></abbr>,
+                <abbr title="Eliminar categoria" key={1}><button className={s.btnDel} onClick={()=>deleteCat(a.idCategory)}><FontAwesomeIcon icon={faTrashAlt}/></button></abbr>
             ]}
     })
     
     useEffect(()=>{
         dispatch(getCategories())
-    },[dispatch])
+        setEdit(false)
+        setRemove(false)
+    },[dispatch,category, edit, remove])
 
     function handleSubmit(e){
         e.preventDefault();
