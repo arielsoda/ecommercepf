@@ -247,7 +247,7 @@ const SERVER = 'http://localhost:3001';
                 })
             }
         }catch(err){
-            console.lor(err)
+            console.log(err)
         }
     };
 
