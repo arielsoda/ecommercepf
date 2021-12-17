@@ -7,7 +7,7 @@ var start = false;
 
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: true }).then(async () => {
   if (start) {
     server.listen(3001,  () => {
       console.log('%s listening at 3001'); // eslint-disable-line no-console
