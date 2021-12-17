@@ -16,9 +16,9 @@ import { GET_ALL_PRODUCTS,
     REMOVE_PRODUCT,
     EDIT_CATEGORY,
     EDIT_PRODUCT,
+    EDIT_BRANDS,
     LOGIN,
     LOGOUT,
-    EDIT_BRANDS
 } from "./actionsTypes";
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -283,13 +283,23 @@ const SERVER = 'http://localhost:3001';
         }
     };
 
-    export function removeProduct(idProduct) {
+    export function editProduct(id, name, price, stock, sold_quantity, condition, image, thumbnail, attribute, categories, brands) {
         return async function(dispatch){
             try{
-                const remProduct= await axios.delete(`${SERVER}/products/${idProduct}`)
+                const remProduct= await axios.delete(`${SERVER}/products/${id, {name: name, price: price, stock: stock, sold_quantity: sold_quantity, condition: condition, image: image, thumbnail: thumbnail, attribute: attribute, categories: categories, brands: brands}}`)
                 return dispatch({
-                    type: REMOVE_PRODUCT,
-                    payload: idProduct
+                    type: EDIT_PRODUCT,
+                    payload: {  id, 
+                                name, 
+                                price, 
+                                stock, 
+                                sold_quantity, 
+                                condition, 
+                                image, 
+                                thumbnail, 
+                                attribute, 
+                                categories, 
+                                brands}
                 })     
             }catch(err){
                 console.log(err)
