@@ -9,7 +9,7 @@ var start = false;
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async () => {
   if (start) {
-    server.listen(process.env.PORT || 5000,  () => {
+    server.listen(process.env.PORT,  () => {
       console.log('%s listening at 3001'); // eslint-disable-line no-console
     });
   }else{
@@ -58,7 +58,7 @@ conn.sync({ force: true }).then(async () => {
     }
 
     //[Inicializo el servidor
-    server.listen(process.env.PORT || 5000,  () => {
+    server.listen(process.env.PORT,  () => {
       console.log('%s listening at 3001'); // eslint-disable-line no-console
     });
     start = true;
